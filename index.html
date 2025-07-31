@@ -11,13 +11,21 @@
             --primary-dark: #bfa500;
             --secondary: #2d8cff;
             --success: #39d353;
-            --bg-dark: #10131b;
-            --bg-card: #191c22;
-            --bg-header: #161922;
+            --danger: #ff5757;
+            --bg-dark: #16192a;
+            --bg-card: #23253b;
+            --bg-header: #1e2040;
+            --bg-accent: #2d8cff30;
             --text-light: #f3f6fb;
             --text-muted: #b9bac3;
-            --card-radius: 22px;
-            --shadow: 0 8px 32px #0005;
+            --purple: #b67fff;
+            --aqua: #00ffe7;
+            --orange: #ffb746;
+            --pink: #ff6bb0;
+            --card-radius: 18px;
+            --shadow: 0 4px 20px #0002;
+            --shadow-hover: 0 8px 28px #2d8cff40;
+            --transition: .18s cubic-bezier(.47,1.64,.41,.8);
         }
         html, body {
             margin: 0; padding: 0;
@@ -27,159 +35,247 @@
             min-height: 100vh;
         }
         body {
-            display: flex;
-            flex-direction: column;
             min-height: 100vh;
         }
         header {
             background: var(--bg-header);
             color: var(--primary);
-            padding: 2.5rem 1rem 2rem 1rem;
+            padding: 1.3rem 0.5rem 1.3rem 0.5rem;
             text-align: center;
             box-shadow: 0 2px 16px #0004;
-            border-bottom: 2.5px solid var(--primary);
+            border-bottom: 2px solid var(--primary);
         }
-        .header-logo {
+        .header-flex-wrap {
             display: flex;
-            justify-content: center;
             align-items: center;
-            margin-bottom: 1.5rem;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-bottom: .5rem;
         }
         .header-logo img {
-            width: 110px;
-            height: 110px;
+            width: 62px;
+            height: 62px;
             border-radius: 50%;
-            border: 5px solid var(--primary);
+            border: 3px solid var(--primary);
             background: #23272e;
             object-fit: cover;
-            box-shadow: 0 4px 20px #0006;
+            box-shadow: 0 2px 10px #0004;
         }
         header h1 {
-            margin: 0 0 0.4rem;
-            font-size: 2.7rem;
+            margin: 0 0 0.15rem;
+            font-size: 1.7rem;
             font-weight: 700;
-            letter-spacing: 2.2px;
+            letter-spacing: 1.2px;
             color: var(--primary);
-            text-shadow: 0 2px 10px #0007;
+            text-shadow: 0 2px 8px #0003;
         }
-        header p {
-            margin: 0;
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            letter-spacing: 0.3px;
+        .header-note {
+            margin: .2rem auto .5rem auto;
+            font-size: 1.04rem;
+            color: var(--aqua);
+            font-weight: 600;
+            letter-spacing: 0.1px;
+            max-width: 410px;
+            background: linear-gradient(120deg, var(--bg-card) 70%, var(--bg-accent) 100%);
+            border-radius: 14px;
+            padding: 0.8rem .9rem .8rem .9rem;
+            line-height: 1.5;
+            box-shadow: 0 2px 10px #2d8cff14;
+            border: 1.2px solid var(--secondary);
+        }
+        .header-feature-list {
+            list-style: none;
+            margin: 0.5rem 0 0 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            justify-content: center;
+        }
+        .header-feature-list li {
+            background: linear-gradient(90deg, var(--purple) 15%, var(--secondary) 85%);
+            color: var(--bg-header);
+            font-weight: 700;
+            border-radius: 13px;
+            font-size: .95rem;
+            padding: 0.36em 1em;
+            box-shadow: 0 1.5px 5px #b67fff33;
+            border: 1.5px solid var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        .header-feature-list li:nth-child(2) {
+            background: linear-gradient(90deg, var(--aqua) 20%, var(--orange) 80%);
+            color: var(--bg-dark);
+            border: 1.5px solid var(--secondary);
+        }
+        .header-feature-list li:nth-child(3) {
+            background: linear-gradient(90deg, var(--secondary) 30%, var(--pink) 100%);
+            color: #fff;
+            border: 1.5px solid var(--aqua);
+        }
+        .header-feature-list li:nth-child(4) {
+            background: linear-gradient(90deg, var(--primary) 20%, var(--orange) 100%);
+            color: var(--bg-header);
+            border: 1.5px solid var(--pink);
+        }
+        .header-feature-list li:nth-child(5) {
+            background: linear-gradient(90deg, var(--success) 20%, var(--aqua) 100%);
+            color: var(--bg-header);
+            border: 1.5px solid var(--success);
+        }
+        .header-feature-list li:nth-child(6) {
+            background: linear-gradient(90deg, var(--danger) 20%, var(--primary-dark) 100%);
+            color: #fff;
+            border: 1.5px solid var(--danger);
         }
 
         .main-container {
-            flex: 1 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 2.8rem;
-            max-width: 900px;
-            margin: 0 auto 2.5rem auto;
-            padding: 1.7rem 1rem 0 1rem;
+            margin: 0 auto;
+            max-width: 480px;
+            padding: 1.3rem 0.5rem 0.5rem 0.5rem;
         }
 
+        .plans-section {
+            margin: 1.1rem 0 0.9rem 0;
+        }
+        .plans-title {
+            font-size: 1.22rem;
+            font-weight: 800;
+            color: var(--secondary);
+            text-align: center;
+            margin-bottom: .75rem;
+            text-shadow: 0 2px 8px #2d8cff2a;
+        }
+        .plans-scroll {
+            display: flex;
+            gap: 1.1rem;
+            overflow-x: auto;
+            padding-bottom: 0.4rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--secondary) var(--bg-dark);
+        }
+        .plans-scroll::-webkit-scrollbar {
+            height: 7px;
+            background: var(--bg-dark);
+        }
+        .plans-scroll::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
         .plan-card {
-            background: linear-gradient(135deg, var(--bg-card) 85%, #262b3b 100%);
+            min-width: 230px;
+            background: linear-gradient(135deg, var(--bg-card) 70%, var(--bg-accent) 100%);
             border-radius: var(--card-radius);
             box-shadow: var(--shadow);
-            padding: 2.2rem 2.5rem 2rem 2.5rem;
+            padding: 1.15rem 1.1rem 1rem 1.1rem;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px solid transparent;
+            transition: border var(--transition), box-shadow var(--transition), transform var(--transition);
+            outline: 2px solid transparent;
+        }
+        .plan-card.best {
+            border: 2.5px solid var(--primary);
+            box-shadow: 0 8px 28px #ffd7003a, var(--shadow);
+            outline: 2.5px solid var(--secondary);
+            transform: scale(1.03);
         }
         .plan-title {
-            font-size: 1.55rem;
+            font-size: 1.07rem;
             color: var(--primary);
             font-weight: 700;
-            margin-bottom: 0.85em;
-            letter-spacing: 1.1px;
+            margin-bottom: 0.6em;
+            letter-spacing: .7px;
             text-align: center;
+            text-shadow: 0 1.5px 4px #ffd70026;
         }
         .plan-price-row {
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            gap: 0.7em;
-            margin-bottom: 0.7em;
+            gap: 0.37em;
+            margin-bottom: 0.4em;
         }
         .plan-price {
-            font-size: 2.3rem;
+            font-size: 1.29rem;
             color: #fff;
             background: linear-gradient(90deg, var(--primary) 60%, var(--primary-dark) 100%);
-            padding: 0.28em 1.4em;
+            padding: 0.22em .85em;
             border-radius: 50px;
             font-weight: 900;
-            letter-spacing: 2px;
-            box-shadow: 0 2px 18px #ffd70040;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px #ffd70023;
             border: 2px solid var(--primary);
         }
+        .plan-old-price {
+            font-size: .97rem;
+            color: var(--danger);
+            text-decoration: line-through;
+            font-weight: 600;
+            margin-left: 0.15em;
+        }
         .plan-duration {
-            font-size: 1.13rem;
+            font-size: .96rem;
             color: var(--success);
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            margin-top: 0.1em;
+        }
+        .plan-save {
+            background: var(--success);
+            color: #fff;
+            font-size: .89rem;
+            padding: 0.18em .7em;
+            border-radius: 20px;
+            margin-top: 0.4em;
+            margin-bottom: 0.4em;
             font-weight: 700;
             letter-spacing: 0.7px;
+            box-shadow: 0 2px 8px #39d35319;
         }
-        .plan-divider {
-            border: none;
-            border-top: 1.5px solid #262b3b;
-            margin: 1.4em 0 1.6em 0;
+        .plan-card.best .plan-save {
+            background: var(--secondary);
         }
-
-        .benefit-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1.2em 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1em 2em;
-        }
-        .benefit-list li {
-            background: #22273b;
-            border-radius: 10px;
-            padding: 0.72em 1em;
-            font-size: 1.07rem;
-            color: var(--text-light);
-            box-shadow: 0 3px 7px #0003;
-            display: flex;
-            align-items: center;
-            gap: 0.6em;
-        }
-        .benefit-list li:before {
-            content: "✔";
-            color: var(--success);
-            font-size: 1.1em;
-            font-weight: bold;
+        .plan-card:hover {
+            border: 2.5px solid var(--secondary);
+            outline: 2.5px solid var(--primary);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-3px) scale(1.045);
         }
 
-        .plan-summary {
-            background: #1a1e29;
-            border-left: 5px solid var(--primary);
-            border-radius: 10px;
-            color: var(--text-light);
-            padding: 1.1em 1.3em 1.3em 1.3em;
-            font-size: 1.12rem;
-            margin-bottom: 1.2em;
-            box-shadow: 0 2px 9px #0001;
+        /* Summary Section */
+        .summary-section {
+            margin: 1.2rem auto 1.1rem auto;
+            max-width: 430px;
+            background: linear-gradient(115deg, #1a1e29 80%, #242a3e 100%);
+            border-radius: 14px;
+            padding: 1.2em 1em 1.3em 1em;
+            box-shadow: 0 2px 10px #0002, 0 2px 8px #ffd70019;
+            border-left: 4px solid var(--primary);
         }
-        .plan-summary b {
+        .summary-section h2 {
+            margin-top: 0;
             color: var(--primary);
-        }
-        .plan-summary .highlight {
-            color: var(--success);
-            font-weight: 700;
+            font-size: 1.13rem;
+            text-shadow: 0 2px 6px #ffd7001a;
+            margin-bottom: 1em;
         }
         .plan-profit-table {
             width: 100%;
-            margin: 1.2em auto 0.5em auto;
+            margin: 1em auto 0.3em auto;
             background: #191c22;
-            border-radius: 9px;
-            border: 1.5px solid #ffd70033;
+            border-radius: 8px;
+            border: 1px solid #ffd70022;
             color: #fff;
-            font-size: 1.04rem;
-            box-shadow: 0 2px 10px #0001;
+            font-size: .95rem;
+            box-shadow: 0 1.5px 7px #0001;
         }
         .plan-profit-table th, .plan-profit-table td {
-            padding: 0.65em 0.45em;
+            padding: 0.44em 0.37em;
             text-align: center;
         }
         .plan-profit-table th {
@@ -188,92 +284,80 @@
             font-weight: 700;
         }
         .plan-profit-table td {
-            border-top: 1px solid #ffd70012;
+            border-top: 1px solid #ffd70011;
         }
         .plan-profit-final {
             color: var(--primary);
             font-weight: 900;
-            font-size: 1.16em;
+            font-size: 1.07em;
         }
         .plan-profit-gain {
             color: var(--success);
             font-weight: 800;
         }
-        @media (max-width: 650px) {
-            .plan-card {
-                padding: 1.2em 0.7em 1em 0.7em;
-            }
-            .benefit-list {
-                grid-template-columns: 1fr;
-                gap: 0.7em 0;
-            }
-            .plan-title {
-                font-size: 1.22rem;
-            }
-            .plan-price {
-                font-size: 1.23rem;
-                padding: 0.22em 1em;
-            }
+        .summary-highlight {
+            color: var(--success);
+            font-weight: 700;
         }
 
         /* Free Tips Section */
         #tips-section {
-            background: linear-gradient(120deg, var(--bg-card) 60%, #23272e 100%);
+            background: linear-gradient(120deg, var(--bg-card) 65%, #23272e 100%);
             border-radius: var(--card-radius);
             box-shadow: var(--shadow);
-            padding: 1.9em 1.2em 1.8em 1.2em;
-            margin-top: 0;
-            max-width: 700px;
+            padding: 1.1em 1em 1em 1em;
+            margin-top: 0.3rem;
+            max-width: 410px;
             margin-left: auto;
             margin-right: auto;
             text-align: center;
-            border: 1.5px solid #252c37;
+            border: 1.2px solid #252c37;
         }
         #showFreePredictionBtn {
-            padding: 0.7em 2.1em;
+            padding: 0.5em 1.9em;
             background: var(--success);
             color: #fff;
             border: none;
             border-radius: 8px;
-            font-size: 1.08em;
+            font-size: .98em;
             font-weight: 700;
             letter-spacing: 1.1px;
             cursor: pointer;
             transition: background 0.18s;
-            box-shadow: 0 2px 10px #39d35322;
-            margin-bottom: 1em;
-            margin-top: 0.2em;
+            box-shadow: 0 1.5px 7px #39d35320;
+            margin-bottom: 0.7em;
+            margin-top: 0.1em;
         }
         #showFreePredictionBtn:hover {
             background: #218c34;
         }
         .login-signup-cta {
-            margin: 1.4em 0 1.7em 0;
-            font-size: 1.16em;
+            margin: 1em 0 1.2em 0;
+            font-size: .99em;
             font-weight: 500;
         }
 
         /* Pill Buttons */
         .actions-pill {
             display: flex;
-            gap: 1.2em;
+            gap: 0.7em;
             justify-content: center;
-            margin-bottom: 1.7em;
+            margin-bottom: 1.05em;
             flex-wrap: wrap;
         }
         .pill-btn {
             display: flex;
             align-items: center;
-            gap: 0.7em;
-            padding: 0.82em 2em;
+            gap: 0.5em;
+            padding: 0.65em 1.38em;
             border-radius: 999px;
             font-weight: 700;
-            font-size: 1.09rem;
+            font-size: .97rem;
             border: none;
             outline: none;
             cursor: pointer;
-            box-shadow: 0 5px 18px #0002, 0 1.5px 4px #fff2 inset;
-            letter-spacing: 0.5px;
+            box-shadow: 0 1.5px 7px #0001, 0 1.2px 3px #fff1 inset;
+            letter-spacing: 0.3px;
             text-decoration: none;
             transition: 
                 background 0.17s, 
@@ -283,7 +367,7 @@
             user-select: none;
         }
         .pill-btn .pill-icon {
-            font-size: 1.29em;
+            font-size: 1.11em;
             line-height: 1;
             display: flex;
             align-items: center;
@@ -299,25 +383,14 @@
         .pill-btn.login:hover, .pill-btn.login:focus {
             background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
             color: #181d22;
-            box-shadow: 0 8px 28px #ffd70044;
-            transform: translateY(-2px) scale(1.035);
+            box-shadow: 0 5px 15px #ffd70030;
+            transform: translateY(-2px) scale(1.03);
         }
         .pill-btn.signup:hover, .pill-btn.signup:focus {
             background: linear-gradient(90deg, var(--secondary) 0%, #5dbe74 100%);
             color: #fff;
-            box-shadow: 0 8px 28px #2d8cff44;
-            transform: translateY(-2px) scale(1.035);
-        }
-        @media (max-width: 600px) {
-            .actions-pill {
-                flex-direction: column;
-                gap: 0.8em;
-            }
-            .pill-btn {
-                padding: 1em 1.1em;
-                font-size: 1.01rem;
-                justify-content: center;
-            }
+            box-shadow: 0 5px 15px #2d8cff30;
+            transform: translateY(-2px) scale(1.03);
         }
 
         /* Modal styles for Free Prediction */
@@ -338,21 +411,21 @@
             position: relative;
             max-width: 96vw;
             max-height: 88vh;
-            border-radius: 16px;
-            border: 4px solid var(--primary);
-            box-shadow: 0 4px 32px #000a;
+            border-radius: 12px;
+            border: 3.5px solid var(--primary);
+            box-shadow: 0 4px 22px #000a;
             background: #222;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2.2em 1.2em 1.2em 1.2em;
+            padding: 1.1em 1em .7em 1em;
         }
         .close-modal-fp-btn {
             position: absolute;
-            top: 18px;
-            right: 24px;
+            top: 12px;
+            right: 19px;
             color: var(--primary);
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: bold;
             cursor: pointer;
             z-index: 10000;
@@ -360,34 +433,37 @@
             border: none;
         }
         .prediction-iframe {
-            width: 80vw;
-            max-width: 600px;
-            height: 60vh;
-            min-height: 320px;
+            width: 77vw;
+            max-width: 400px;
+            height: 41vh;
+            min-height: 160px;
             border: none;
-            border-radius: 10px;
+            border-radius: 7px;
             background: #fff;
-            margin-top: 1.5em;
-            margin-bottom: 1em;
+            margin-top: 1em;
+            margin-bottom: .7em;
         }
         .modal-fp-content h2 {
             color: var(--primary);
             margin-top: 0;
+            font-size: 1.13rem;
         }
-        @media (max-width: 768px) {
-            .modal-fp-content {
+        @media (max-width: 600px) {
+            .main-container,
+            .summary-section,
+            #tips-section {
                 max-width: 99vw;
-                max-height: 65vh;
-                padding: 1em 0.4em 0.7em 0.4em;
             }
-            .close-modal-fp-btn {
-                top: 8px;
-                right: 10px;
+            .plan-card {
+                min-width: 82vw;
             }
-            .prediction-iframe {
-                width: 97vw;
-                height: 48vh;
-                min-height: 180px;
+            .plans-scroll {
+                gap: 0.7rem;
+            }
+            .header-note {
+                font-size: .97rem;
+                padding-left: .6rem;
+                padding-right: .6rem;
             }
         }
 
@@ -406,108 +482,105 @@
             background: #fff;
             color: #181d22;
             margin: 5% auto;
-            padding: 30px 24px 24px 24px;
+            padding: 20px 12px 18px 12px;
             border-radius: 10px;
             width: 92%;
-            max-width: 420px;
+            max-width: 340px;
             position: relative;
-            box-shadow: 0 4px 32px #000a;
+            box-shadow: 0 4px 24px #0007;
         }
         #signupModal h3 {
             margin-top: 0;
-            font-size: 1.38rem;
+            font-size: 1.07rem;
             color: var(--secondary);
         }
         #signupModal ol {
             text-align: left;
-            margin: 0 0 16px 0;
+            margin: 0 0 12px 0;
             padding-left: 1.2em;
+            font-size: .98em;
         }
         #signupModal a.signup-proceed {
             display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
+            margin-top: 9px;
+            padding: 8px 16px;
             background: var(--secondary);
             color: #fff;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.08em;
+            font-size: .96em;
         }
         #signupModal button.close-signup-modal-btn {
             position: absolute;
-            top: 10px;
-            right: 14px;
+            top: 7px;
+            right: 12px;
             background: none;
             border: none;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--secondary);
             cursor: pointer;
-        }
-        @media (max-width: 768px) {
-            #signupModal .signup-modal-content {
-                padding: 20px 8px 16px 8px;
-            }
-        }
-        /* Responsive for main container */
-        @media (max-width: 950px) {
-            .main-container {
-                padding: 1.2rem 0.3rem 0 0.3rem;
-            }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="header-logo">
-            <img src="-5890865169557472356_109.jpg" alt="Empire Betting Logo">
+        <div class="header-flex-wrap">
+            <span class="header-logo">
+                <img src="-5890865169557472356_109.jpg" alt="Empire Betting Logo">
+            </span>
+            <span>
+                <h1>Empire Betting Tips</h1>
+            </span>
         </div>
-        <h1>Empire Betting Tips</h1>
-        <p>
-            Discover the best in sports betting advice.<br>
-            <b>100% Guaranteed Tips</b> — Nothing to lose, only winning to gain!
-        </p>
+        <div class="header-note">
+            Daily access to carefully selected football rollover tips. Consistent daily odds (avg 1.40) for at least 20 days monthly. Expert analysis and BOT-driven selections. Proven method for steady bankroll growth. Priority support for subscribers. Low risk, high consistency strategy.
+        </div>
+        <ul class="header-feature-list">
+            <li>Discover the best in sports betting advice.</li>
+            <li>100% Guaranteed Tips — Nothing to lose, only winning to gain!</li>
+        </ul>
     </header>
 
     <div class="main-container">
-        <section class="plan-card">
-            <div class="plan-title">Monthly Plan — EmpireBet Rollover Football Tips.</div>
-            <div class="plan-price-row">
-                <span class="plan-price">₦15,000</span>
-                <span class="plan-duration">1 Month Access</span>
-            </div>
-            <hr class="plan-divider">
-            <ul class="benefit-list">
-                <li>Daily access to carefully selected football rollover tips</li>
-                <li>Consistent daily odds (avg 1.40) for at least 20 days monthly</li>
-                <li>Expert analysis and BOT-driven selections</li>
-                <li>Proven method for steady bankroll growth</li>
-                <li>Priority support for subscribers</li>
-                <li>Low risk, high consistency strategy</li>
-            </ul>
-            <div class="plan-summary">
-                <b>Subscribe with ₦15,000</b> and receive an estimated betting odd of <span class="highlight">1.40</span> daily for at least <span class="highlight">20 days</span> in a month.<br><br>
-                If you stake <b>₦1,000</b> per tip:
-                <table class="plan-profit-table">
-                    <tr>
-                        <th>Daily Stake</th>
-                        <th>Estimated Odd</th>
-                        <th>Days</th>
-                        <th>Total Payout</th>
-                        <th>Profit</th>
-                    </tr>
-                    <tr>
-                        <td>₦1,000</td>
-                        <td>1.40</td>
-                        <td>20</td>
-                        <td class="plan-profit-final">₦28,000</td>
-                        <td class="plan-profit-gain">₦13,000</td>
-                    </tr>
-                </table>
-                <span class="highlight">Gaining ₦13,000 after one month!</span>
+
+        <!-- Plans Section -->
+        <section class="plans-section">
+            <div class="plans-title">Choose Your Subscription Plan</div>
+            <div class="plans-scroll" id="plansScroll">
+                <!-- Plans will be injected here by JavaScript -->
             </div>
         </section>
 
+        <!-- Summary Section -->
+        <section class="summary-section" id="summarySection">
+            <h2>Subscription Benefit Summary (₦15,000 for 1 Month)</h2>
+            <p>
+                <b>Subscribe with ₦15,000</b> and receive an estimated betting odd of <span class="summary-highlight">1.40</span> daily for at least <span class="summary-highlight">20 days</span> in a month.<br><br>
+                If you stake <b>₦1,000</b> per tip:
+            </p>
+            <table class="plan-profit-table">
+                <tr>
+                    <th>Daily Stake</th>
+                    <th>Estimated Odd</th>
+                    <th>Days</th>
+                    <th>Total Payout</th>
+                    <th>Profit</th>
+                </tr>
+                <tr>
+                    <td>₦1,000</td>
+                    <td>1.40</td>
+                    <td>20</td>
+                    <td class="plan-profit-final">₦28,000</td>
+                    <td class="plan-profit-gain">₦13,000</td>
+                </tr>
+            </table>
+            <div>
+                <span class="summary-highlight">Gaining ₦13,000 after one month!</span>
+            </div>
+        </section>
+
+        <!-- Free Tips Section -->
         <section id="tips-section">
             <button id="showFreePredictionBtn">Get Free Tips</button>
             <div class="login-signup-cta">
@@ -554,7 +627,55 @@
         <a href="https://paystack.shop/pay/tonk0bpr5w" class="signup-proceed" target="_blank" rel="noopener">Proceed to Sign Up</a>
       </div>
     </div>
+
     <script>
+        // PLANS DATA AND RENDERING
+        const BASE_PRICE = 15000;
+        const DISCOUNT = 0.10;
+        const plans = [];
+        for (let m = 1; m <= 12; m++) {
+            const oldPrice = BASE_PRICE * m;
+            const newPrice = Math.round(oldPrice * (1 - DISCOUNT));
+            plans.push({
+                months: m,
+                oldPrice: oldPrice,
+                price: newPrice,
+                save: oldPrice - newPrice
+            });
+        }
+
+        function planDurationStr(m) {
+            return m === 1 ? '1 Month Access' : `${m} Months Access`;
+        }
+
+        function planTitleStr(m) {
+            return m === 1
+                ? 'Monthly Plan'
+                : `${m}-Month Plan`;
+        }
+
+        function renderPlans() {
+            const plansScroll = document.getElementById('plansScroll');
+            plansScroll.innerHTML = '';
+            plans.forEach((plan, idx) => {
+                const isBest = plan.months === 1;
+                const planCard = document.createElement('div');
+                planCard.className = 'plan-card' + (isBest ? ' best' : '');
+                planCard.innerHTML = `
+                    <div class="plan-title">${planTitleStr(plan.months)}</div>
+                    <div class="plan-price-row">
+                        <span class="plan-price">₦${plan.price.toLocaleString()}</span>
+                        ${plan.oldPrice !== plan.price ? `<span class="plan-old-price">₦${plan.oldPrice.toLocaleString()}</span>` : ''}
+                    </div>
+                    <span class="plan-duration">${planDurationStr(plan.months)}</span>
+                    <div class="plan-save">${plan.save > 0 ? `Save ₦${plan.save.toLocaleString()} (${DISCOUNT*100}% OFF)` : '&nbsp;'}</div>
+                `;
+                plansScroll.appendChild(planCard);
+            });
+        }
+        renderPlans();
+
+        // FREE PREDICTION MODAL
         let currentPredictionLink = "https://empirebet77.blogspot.com/2025/03/please-take-your-booking-number-to-any.html?m=1#more";
         const freePredictionModal = document.getElementById('freePredictionModal');
         const showFreePredictionBtn = document.getElementById('showFreePredictionBtn');
@@ -582,6 +703,7 @@
             }
         };
 
+        // SIGNUP MODAL LOGIC
         document.getElementById('openSignupModal').onclick = function() {
             document.getElementById('signupModal').style.display = 'flex';
         };
