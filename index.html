@@ -3,278 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empire Betting Tips | Fast Winning Predictions</title>
+    <title>Empire Betting Tips | Your Winning Edge</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;500;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #ffd700;
-            --primary-dark: #bfa500;
-            --secondary: #2d8cff;
-            --success: #39d353;
-            --danger: #ff5757;
-            --bg-dark: #16192a;
-            --bg-card: #23253b;
-            --bg-header: #1e2040;
-            --bg-accent: #2d8cff30;
-            --text-light: #f3f6fb;
-            --aqua: #00ffe7;
-            --card-radius: 15px;
-            --shadow: 0 4px 20px #0002;
-            --transition: .18s cubic-bezier(.47,1.64,.41,.8);
+            --primary: #1857ff;
+            --accent: #00c896;
+            --text: #222;
+            --bg: #f7f8fa;
+            --white: #fff;
+            --shadow: 0 2px 12px #0001;
+            --radius: 15px;
+            --border: #e2e6ef;
         }
         html, body {
-            margin: 0; padding: 0;
-            background: var(--bg-dark);
-            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            color: var(--text);
             font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-            height: 100%;
+            min-height: 100%;
         }
         body {
             min-height: 100vh;
         }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
         header {
-            background: var(--bg-header);
-            color: var(--primary);
-            padding: .9rem 0 .9rem 0;
-            box-shadow: 0 2px 16px #0004;
-            border-bottom: 2px solid var(--primary);
+            background: var(--primary);
+            color: var(--white);
+            border-bottom-left-radius: var(--radius);
+            border-bottom-right-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2.3rem 0 1.1rem 0;
             text-align: center;
-            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        .logo-circle {
+            background: var(--white);
+            border-radius: 50%;
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px #1857ff33;
+            overflow: hidden;
+        }
+        .logo-circle img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+        h1 {
+            font-size: 2.1rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: 1px;
         }
         .top-actions {
             display: flex;
-            justify-content: flex-end;
-            gap: 1rem;
-            position: absolute;
-            right: 1.2rem;
-            top: 1.1rem;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 1.3rem;
         }
         .pill-btn {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 0.5em;
-            padding: 0.52em 1.25em;
+            padding: 0.55em 1.35em;
             border-radius: 999px;
             font-weight: 700;
-            font-size: .97rem;
+            font-size: 1rem;
             border: none;
             outline: none;
             cursor: pointer;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: #181d22;
-            box-shadow: 0 1.5px 7px #0001;
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: none;
             text-decoration: none;
-            transition: background .17s, color .15s;
+            transition: background .15s, color .13s, box-shadow .18s;
         }
-        .pill-btn.signup {
-            background: linear-gradient(90deg, var(--secondary) 0%, var(--aqua) 100%);
-            color: #fff;
+        .pill-btn.login {
+            background: var(--white);
+            color: var(--primary);
+            border: 1.5px solid var(--accent);
         }
         .pill-btn:hover, .pill-btn:focus {
-            box-shadow: 0 5px 15px #ffd70030;
-            transform: translateY(-2px) scale(1.03);
+            opacity: 0.94;
+            box-shadow: 0 2px 12px #1857ff22;
         }
-        .logo-row {
+        .main-flex {
             display: flex;
-            align-items: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem;
         }
-        .header-logo img {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 2px solid var(--primary);
-            background: #23272e;
-            object-fit: cover;
-            box-shadow: 0 2px 10px #0004;
-        }
-        h1 {
-            margin: 0;
-            font-size: 1.35rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--primary);
-        }
-        .quick-note {
-            margin: .5rem auto .5rem auto;
-            font-size: .99rem;
-            color: var(--aqua);
-            font-weight: 600;
+        .side-card, .core-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem 1.2rem 1.7rem 1.2rem;
+            margin-bottom: 2rem;
+            min-width: 295px;
             max-width: 370px;
-            background: linear-gradient(120deg, var(--bg-card) 70%, var(--bg-accent) 100%);
-            border-radius: 10px;
-            padding: .65rem .8rem;
-            box-shadow: 0 2px 10px #2d8cff14;
-            border: 1px solid var(--secondary);
-        }
-        .main-container {
-            margin: 0 auto;
-            max-width: 410px;
-            padding: 1rem 0.5rem 0.5rem 0.5rem;
-        }
-        .plans-section {
-            margin: 1.2rem 0 0.8rem 0;
-            background: var(--bg-card);
-            border-radius: var(--card-radius);
-            padding: 1rem .7rem .6rem .7rem;
-            box-shadow: var(--shadow);
-        }
-        .plans-title {
-            font-size: 1.13rem;
-            font-weight: 700;
-            color: var(--secondary);
-            text-align: center;
-            margin-bottom: .55rem;
-        }
-        .plans-scroll {
-            display: flex;
-            gap: .6rem;
-            overflow-x: auto;
-            padding-bottom: 0.2rem;
-            scrollbar-width: thin;
-            scrollbar-color: var(--secondary) var(--bg-dark);
-        }
-        .plan-card {
-            min-width: 135px;
-            background: linear-gradient(135deg, var(--bg-card) 70%, var(--bg-accent) 100%);
-            border-radius: var(--card-radius);
-            box-shadow: var(--shadow);
-            padding: .6rem .6rem .5rem .6rem;
-            text-align: center;
-            border: 2px solid var(--bg-header);
-            transition: border var(--transition), box-shadow var(--transition), transform var(--transition);
-        }
-        .plan-card.best {
-            border: 2px solid var(--primary);
-        }
-        .plan-title {
-            font-size: .98rem;
-            color: var(--primary);
-            font-weight: 700;
-            margin-bottom: .3em;
-        }
-        .plan-price-row {
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            gap: 0.3em;
-            margin-bottom: 0.2em;
-        }
-        .plan-price {
-            font-size: 1.07rem;
-            color: #fff;
-            background: linear-gradient(90deg, var(--primary) 60%, var(--primary-dark) 100%);
-            padding: 0.12em .7em;
-            border-radius: 50px;
-            font-weight: 900;
-            letter-spacing: .3px;
-            box-shadow: 0 2px 10px #ffd70023;
-            border: 1.5px solid var(--primary);
-        }
-        .plan-old-price {
-            font-size: .88rem;
-            color: var(--danger);
-            text-decoration: line-through;
-            font-weight: 600;
-            margin-left: 0.13em;
-        }
-        .plan-duration {
-            font-size: .90rem;
-            color: var(--success);
-            font-weight: 700;
-        }
-        .plan-save {
-            background: var(--success);
-            color: #fff;
-            font-size: .84rem;
-            padding: .14em .6em;
-            border-radius: 15px;
-            margin-top: .3em;
-            font-weight: 700;
-        }
-        /* Free Tips Section */
-        #tips-section {
-            background: linear-gradient(120deg, var(--bg-card) 65%, #23272e 100%);
-            border-radius: var(--card-radius);
-            box-shadow: var(--shadow);
-            padding: .8em .7em .7em .7em;
-            margin-top: 0.3rem;
-            max-width: 410px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            border: 1px solid #252c37;
-        }
-        #showFreePredictionBtn {
-            padding: 0.45em 1.5em;
-            background: var(--success);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-size: .95em;
-            font-weight: 700;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: background 0.18s;
-            box-shadow: 0 1.5px 7px #39d35320;
-            margin-bottom: 0.55em;
-        }
-        #showFreePredictionBtn:hover {
-            background: #218c34;
-        }
-        /* Modal styles for Free Prediction */
-        .modal-fp {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0; top: 0; width: 100vw; height: 100vh;
-            background-color: rgba(0,0,0,0.85);
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-fp.active {display: flex;}
-        .modal-fp-content {
-            position: relative;
-            max-width: 95vw;
-            max-height: 85vh;
-            border-radius: 12px;
-            border: 3px solid var(--primary);
-            box-shadow: 0 4px 22px #000a;
-            background: #222;
+            flex: 1 1 295px;
+            border: 1.5px solid var(--border);
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: .7em .7em .6em .7em;
         }
-        .close-modal-fp-btn {
-            position: absolute;
-            top: 9px;
-            right: 15px;
+        .core-card {
+            min-width: 330px;
+            max-width: 430px;
+            background: #f0f5fe;
+            border: 1.7px solid var(--primary);
+        }
+        .core-title {
+            font-size: 1.21rem;
+            font-weight: 700;
             color: var(--primary);
-            font-size: 1.7rem;
-            font-weight: bold;
-            cursor: pointer;
-            background: none;
-            border: none;
+            margin-bottom: .7em;
+            letter-spacing: .5px;
         }
-        .prediction-iframe {
-            width: 75vw;
-            max-width: 370px;
-            height: 37vh;
-            min-height: 120px;
-            border: none;
-            border-radius: 7px;
-            background: #fff;
-            margin-top: .8em;
-            margin-bottom: .4em;
+        .price-highlight {
+            font-size: 1.18rem;
+            color: var(--accent);
+            font-weight: 700;
+            background: var(--white);
+            padding: .18em .9em;
+            border-radius: 999px;
+            margin-bottom: .3em;
+            border: 1.7px dashed var(--accent);
         }
-        .modal-fp-content h2 {
+        .odds-note {
             color: var(--primary);
-            margin-top: 0;
-            font-size: 1.08rem;
+            font-weight: 600;
+            font-size: 1.08em;
+            margin-bottom: .7em;
         }
-        /* Registration Guide Modal styles */
+        .desc {
+            color: #555b72;
+            font-size: 1em;
+            font-weight: 500;
+            margin-bottom: 1.2em;
+            text-align: center;
+        }
+        .core-card .pill-btn.signup {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            font-size: 1.04em;
+        }
+        .side-title {
+            font-size: 1.09em;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: .7em;
+        }
+        .side-card .desc {
+            font-size: .97em;
+            margin-bottom: .7em;
+        }
+        #tips-section {
+            display: none;
+        }
+        .modal-fp {
+            display: none;
+        }
         #signupModal {
             display: none;
             position: fixed;
@@ -285,37 +187,27 @@
             justify-content: center;
         }
         #signupModal .signup-modal-content {
-            background: #fff;
-            color: #181d22;
-            margin: 6% auto;
+            background: var(--white);
+            color: var(--text);
+            margin: 7% auto;
             padding: 15px 10px 12px 10px;
-            border-radius: 8px;
-            width: 94%;
+            border-radius: var(--radius);
+            width: 95%;
             max-width: 320px;
             position: relative;
-            box-shadow: 0 4px 24px #0007;
-            font-size: .96em;
+            box-shadow: var(--shadow);
+            font-size: .95em;
+            border: 1.5px solid var(--border);
         }
         #signupModal h3 {
             margin-top: 0;
-            font-size: 1.02rem;
-            color: var(--secondary);
+            font-size: 1.01rem;
+            color: var(--primary);
         }
         #signupModal ol {
             text-align: left;
             margin: 0 0 8px 0;
             padding-left: 1.1em;
-        }
-        #signupModal a.signup-proceed {
-            display: inline-block;
-            margin-top: 7px;
-            padding: 7px 13px;
-            background: var(--secondary);
-            color: #fff;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: .97em;
         }
         #signupModal button.close-signup-modal-btn {
             position: absolute;
@@ -324,69 +216,66 @@
             background: none;
             border: none;
             font-size: 1.3rem;
-            color: var(--secondary);
+            color: var(--primary);
             cursor: pointer;
         }
-        @media (max-width: 600px) {
-            .main-container,
-            .plans-section,
-            #tips-section { max-width: 99vw; }
-            .plan-card { min-width: 70vw; }
-            .plans-scroll { gap: 0.45rem; }
-            .quick-note { font-size: .93rem; }
+        @media (max-width: 900px) {
+            .main-flex { flex-direction: column; gap: 0; }
+            .side-card, .core-card { margin-bottom: 1.4rem; max-width: 99vw; }
+        }
+        @media (max-width: 520px) {
+            .container { padding: 0 .2rem; }
+            .side-card, .core-card { padding-left: .4rem; padding-right: .4rem; }
+            header { padding-left: .2rem; padding-right: .2rem;}
         }
     </style>
 </head>
 <body>
     <header>
+        <div class="logo-circle">
+            <img src="-5890865169557472356_109.jpg" alt="Empire Betting Logo">
+        </div>
+        <h1>Empire Betting Tips</h1>
         <div class="top-actions">
             <a href="https://empirestatebank.github.io/Secure-Booking-Code-Generator/" class="pill-btn login" target="_blank" rel="noopener">
                 🗝️ Login
             </a>
-            <a href="javascript:void(0);" class="pill-btn signup" id="openSignupModal">
-                ✨ Sign up
-            </a>
-        </div>
-        <div class="logo-row">
-            <span class="header-logo">
-                <img src="-5890865169557472356_109.jpg" alt="Empire Betting Logo">
-            </span>
-            <h1>Empire Betting Tips</h1>
-        </div>
-        <div class="quick-note">
-            Get daily safe football rollover tips. Average odds 1.40 for 20+ days monthly. Simple, proven, steady profits!
         </div>
     </header>
-
-    <div class="main-container">
-        <section class="plans-section">
-            <div class="plans-title">Subscription Plans</div>
-            <div class="plans-scroll" id="plansScroll">
-                <!-- Plans injected by JS -->
+    <div class="container">
+        <div class="main-flex">
+            <div class="side-card">
+                <div class="side-title">How it Works</div>
+                <div class="desc">
+                    <strong>Subscribe</strong> to gain access to expertly selected football rollover tips.<br>
+                    <strong>Get weekly 2+ odds</strong> sent directly to your account.<br>
+                    <strong>Win more, stress less!</strong>
+                </div>
+                <div class="side-title" style="margin-top:1.7em;">Registration Guide</div>
+                <div class="desc">
+                    <ol style="padding-left:0.9em;margin:0;">
+                        <li>Click "Subscribe Now" and fill your details.</li>
+                        <li>Use "Pay Now" and complete payment.</li>
+                        <li>Refill your details, do face capture, and submit.</li>
+                        <li>Wait for confirmation and verify you are not a robot.</li>
+                        <li>For any issues, contact support.</li>
+                    </ol>
+                </div>
             </div>
-        </section>
-
-        <section id="tips-section">
-            <button id="showFreePredictionBtn">See Free Tip</button>
-            <div style="font-size:.96em;color:var(--aqua);margin:.7em 0 .2em 0;">
-                Fast, safe tip for today!
+            <div class="core-card">
+                <div class="core-title">Get Winning Tips Weekly</div>
+                <div class="price-highlight">Subscribe now: ₦5,500</div>
+                <div class="odds-note">Receive 2+ odds weekly, hand-picked by experts</div>
+                <div class="desc">
+                    Steady profits. Simple, proven results.<br>
+                    The best value for your betting success. Join now!
+                </div>
+                <a href="https://paystack.shop/pay/hi79etvoja" class="pill-btn signup" style="margin-top:.7em;" target="_blank" rel="noopener">
+                    🚀 Subscribe Now
+                </a>
             </div>
-        </section>
-    </div>
-
-    <!-- Modal Popup for Free Prediction -->
-    <div id="freePredictionModal" class="modal-fp">
-        <button class="close-modal-fp-btn" id="closeFreePredictionModalBtn" aria-label="Close">&times;</button>
-        <div class="modal-fp-content">
-            <h2>Your Free Prediction</h2>
-            <iframe class="prediction-iframe" id="predictionIframe" src="" title="Free Prediction"></iframe>
-            <p style="color:#f3f6fb; margin-bottom:0.2em; font-size:.97em;">
-                Interact above. Best viewed on mobile.
-            </p>
         </div>
     </div>
-
-    <!-- Registration Guide Modal -->
     <div id="signupModal">
       <div class="signup-modal-content">
         <button class="close-signup-modal-btn" onclick="document.getElementById('signupModal').style.display='none';" aria-label="Close">&times;</button>
@@ -398,84 +287,14 @@
           <li>Wait for confirmation and verify you are not a robot.</li>
           <li>For any issues, contact our support team.</li>
         </ol>
-        <a href="https://paystack.shop/pay/hi79etvoja" class="signup-proceed" target="_blank" rel="noopener">Proceed to Sign Up</a>
       </div>
     </div>
     <script>
-        // PLANS DATA AND RENDERING
-        const BASE_PRICE = 15000;
-        const DISCOUNT = 0.10;
-        const plans = [];
-        for (let m = 1; m <= 12; m++) {
-            const oldPrice = BASE_PRICE * m;
-            const newPrice = Math.round(oldPrice * (1 - DISCOUNT));
-            plans.push({
-                months: m,
-                oldPrice: oldPrice,
-                price: newPrice,
-                save: oldPrice - newPrice
-            });
-        }
-
-        function planDurationStr(m) {
-            return m === 1 ? '1 Month' : `${m} Months`;
-        }
-        function planTitleStr(m) {
-            return m === 1 ? 'Monthly' : `${m}-Month`;
-        }
-        function renderPlans() {
-            const plansScroll = document.getElementById('plansScroll');
-            plansScroll.innerHTML = '';
-            plans.forEach(plan => {
-                const isBest = plan.months === 1;
-                const planCard = document.createElement('div');
-                planCard.className = 'plan-card' + (isBest ? ' best' : '');
-                planCard.innerHTML = `
-                    <div class="plan-title">${planTitleStr(plan.months)}</div>
-                    <div class="plan-price-row">
-                        <span class="plan-price">₦${plan.price.toLocaleString()}</span>
-                        ${plan.oldPrice !== plan.price ? `<span class="plan-old-price">₦${plan.oldPrice.toLocaleString()}</span>` : ''}
-                    </div>
-                    <div class="plan-duration">${planDurationStr(plan.months)}</div>
-                    ${plan.save > 0 ? `<div class="plan-save">Save ₦${plan.save.toLocaleString()}</div>` : ''}
-                `;
-                plansScroll.appendChild(planCard);
-            });
-        }
-        renderPlans();
-
-        // FREE PREDICTION MODAL
-        let currentPredictionLink = "https://empirebet77.blogspot.com/2025/03/please-take-your-booking-number-to-any.html?m=1#more";
-        const freePredictionModal = document.getElementById('freePredictionModal');
-        const showFreePredictionBtn = document.getElementById('showFreePredictionBtn');
-        const closeFreePredictionModalBtn = document.getElementById('closeFreePredictionModalBtn');
-        const predictionIframe = document.getElementById('predictionIframe');
-
-        showFreePredictionBtn.onclick = function() {
-            predictionIframe.src = currentPredictionLink;
-            freePredictionModal.classList.add('active');
-        }
-        closeFreePredictionModalBtn.onclick = function() {
-            freePredictionModal.classList.remove('active');
-            predictionIframe.src = "";
-        }
-        document.addEventListener('keydown', function(e) {
-            if(freePredictionModal.classList.contains('active') && e.key === 'Escape') {
-                freePredictionModal.classList.remove('active');
-                predictionIframe.src = "";
-            }
-        });
-        freePredictionModal.onclick = function(event) {
-            if(event.target === freePredictionModal) {
-                freePredictionModal.classList.remove('active');
-                predictionIframe.src = "";
-            }
-        };
-
         // SIGNUP MODAL LOGIC
-        document.getElementById('openSignupModal').onclick = function() {
-            document.getElementById('signupModal').style.display = 'flex';
-        };
+        // If you want the Subscribe Now button to open the modal, uncomment the following:
+        // document.querySelector('.pill-btn.signup').onclick = function() {
+        //     document.getElementById('signupModal').style.display = 'flex';
+        // };
         document.addEventListener('keydown', function(e) {
             const signupModal = document.getElementById('signupModal');
             if(signupModal.style.display === 'flex' && e.key === 'Escape') {
