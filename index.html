@@ -1,311 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empire Betting Tips | Your Winning Edge</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;500;400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #1857ff;
-            --accent: #00c896;
-            --text: #222;
-            --bg: #f7f8fa;
-            --white: #fff;
-            --shadow: 0 2px 12px #0001;
-            --radius: 15px;
-            --border: #e2e6ef;
-        }
-        html, body {
-            margin: 0;
-            padding: 0;
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-            min-height: 100%;
-        }
-        body {
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        header {
-            background: var(--primary);
-            color: var(--white);
-            border-bottom-left-radius: var(--radius);
-            border-bottom-right-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 2.3rem 0 1.1rem 0;
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-        .logo-circle {
-            background: var(--white);
-            border-radius: 50%;
-            width: 72px;
-            height: 72px;
-            margin: 0 auto 1rem auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 12px #1857ff33;
-            overflow: hidden;
-        }
-        .logo-circle img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--primary);
-        }
-        h1 {
-            font-size: 2.1rem;
-            font-weight: 700;
-            margin: 0 0 0.5rem 0;
-            letter-spacing: 1px;
-        }
-        .top-actions {
-            display: flex;
-            justify-content: center;
-            gap: 1.2rem;
-            margin-top: 1.3rem;
-        }
-        .pill-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5em;
-            padding: 0.55em 1.35em;
-            border-radius: 999px;
-            font-weight: 700;
-            font-size: 1rem;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            background: var(--accent);
-            color: var(--white);
-            box-shadow: none;
-            text-decoration: none;
-            transition: background .15s, color .13s, box-shadow .18s;
-        }
-        .pill-btn.login {
-            background: var(--white);
-            color: var(--primary);
-            border: 1.5px solid var(--accent);
-        }
-        .pill-btn:hover, .pill-btn:focus {
-            opacity: 0.94;
-            box-shadow: 0 2px 12px #1857ff22;
-        }
-        .main-flex {
-            display: flex;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .side-card, .core-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 2rem 1.2rem 1.7rem 1.2rem;
-            margin-bottom: 2rem;
-            min-width: 295px;
-            max-width: 370px;
-            flex: 1 1 295px;
-            border: 1.5px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .core-card {
-            min-width: 330px;
-            max-width: 430px;
-            background: #f0f5fe;
-            border: 1.7px solid var(--primary);
-        }
-        .core-title {
-            font-size: 1.21rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: .7em;
-            letter-spacing: .5px;
-        }
-        .price-highlight {
-            font-size: 1.18rem;
-            color: var(--accent);
-            font-weight: 700;
-            background: var(--white);
-            padding: .18em .9em;
-            border-radius: 999px;
-            margin-bottom: .3em;
-            border: 1.7px dashed var(--accent);
-        }
-        .odds-note {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 1.08em;
-            margin-bottom: .7em;
-        }
-        .desc {
-            color: #555b72;
-            font-size: 1em;
-            font-weight: 500;
-            margin-bottom: 1.2em;
-            text-align: center;
-        }
-        .core-card .pill-btn.signup {
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-            font-size: 1.04em;
-        }
-        .side-title {
-            font-size: 1.09em;
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: .7em;
-        }
-        .side-card .desc {
-            font-size: .97em;
-            margin-bottom: .7em;
-        }
-        #tips-section {
-            display: none;
-        }
-        .modal-fp {
-            display: none;
-        }
-        #signupModal {
-            display: none;
-            position: fixed;
-            z-index: 10001;
-            left: 0; top: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.7);
-            align-items: center;
-            justify-content: center;
-        }
-        #signupModal .signup-modal-content {
-            background: var(--white);
-            color: var(--text);
-            margin: 7% auto;
-            padding: 15px 10px 12px 10px;
-            border-radius: var(--radius);
-            width: 95%;
-            max-width: 320px;
-            position: relative;
-            box-shadow: var(--shadow);
-            font-size: .95em;
-            border: 1.5px solid var(--border);
-        }
-        #signupModal h3 {
-            margin-top: 0;
-            font-size: 1.01rem;
-            color: var(--primary);
-        }
-        #signupModal ol {
-            text-align: left;
-            margin: 0 0 8px 0;
-            padding-left: 1.1em;
-        }
-        #signupModal button.close-signup-modal-btn {
-            position: absolute;
-            top: 6px;
-            right: 9px;
-            background: none;
-            border: none;
-            font-size: 1.3rem;
-            color: var(--primary);
-            cursor: pointer;
-        }
-        @media (max-width: 900px) {
-            .main-flex { flex-direction: column; gap: 0; }
-            .side-card, .core-card { margin-bottom: 1.4rem; max-width: 99vw; }
-        }
-        @media (max-width: 520px) {
-            .container { padding: 0 .2rem; }
-            .side-card, .core-card { padding-left: .4rem; padding-right: .4rem; }
-            header { padding-left: .2rem; padding-right: .2rem;}
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Empire Betting Tips — Professional Picks</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --text:#111827;
+      --accent:#0b63ff;
+      --accent-2:#00b389;
+      --radius:12px;
+      --shadow: 0 10px 30px rgba(16,24,40,0.06);
+      --max-width:960px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max-width);margin:36px auto;padding:0 20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,#0b63ff,#2a8bff);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);
+      overflow:hidden;border:2px solid rgba(255,255,255,0.06)
+    }
+    .logo img{width:46px;height:46px;object-fit:cover;border-radius:8px}
+    .brand .title{font-weight:700;font-size:1rem}
+    .brand .sub{font-size:0.86rem;color:var(--muted)}
+
+    main{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;margin-top:18px}
+    @media (max-width:880px){ main{grid-template-columns:1fr; } .side{order:-1} }
+
+    .hero{background:var(--card);padding:28px;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(16,24,40,0.04)}
+    .hero h1{margin:0 0 10px 0;font-size:1.6rem;line-height:1.05}
+    .hero p{margin:0 0 18px 0;color:var(--muted);font-size:1rem;max-width:60ch}
+
+    .features{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .feature{background:transparent;padding:8px 12px;border-radius:8px;color:var(--text);font-weight:600;font-size:0.95rem;border:1px solid rgba(16,24,40,0.03)}
+
+    /* pricing card (single source for Subscribe + Login) */
+    .side{background:var(--card);padding:20px;border-radius:12px;border:1px solid rgba(16,24,40,0.04);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px;align-items:stretch}
+    .price-row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .price{font-size:1.25rem;font-weight:800;color:var(--accent-2)}
+    .price-sub{color:var(--muted);font-weight:600}
+    .trusted{color:var(--muted);font-size:0.95rem}
+    .side .desc{color:var(--muted);font-size:0.95rem}
+    .cta{display:flex;flex-direction:column;gap:8px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;padding:11px 14px;border-radius:8px;font-weight:700;font-size:0.98rem;border:0;cursor:pointer
+    }
+    .btn.subscribe{background:linear-gradient(90deg,var(--accent-2),#18d7b0);color:#022}
+    .btn.login{background:transparent;border:1px solid rgba(16,24,40,0.06);color:var(--text)}
+
+    footer{margin-top:28px;color:var(--muted);font-size:0.9rem;padding-bottom:20px;display:flex;justify-content:space-between;align-items:center}
+    .muted{color:var(--muted)}
+
+    /* focus */
+    .btn:focus{outline:3px solid rgba(11,99,255,0.12);outline-offset:3px}
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo-circle">
-            <img src="-5890865169557472356_109.jpg" alt="Empire Betting Logo">
+  <div class="container" role="main">
+
+    <header aria-label="Top bar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <img src="-5890865169557472356_109.jpg" alt="Empire Betting logo">
         </div>
-        <h1>Empire Betting Tips</h1>
-        <div class="top-actions">
-            <a href="https://empirestatebank.github.io/Secure-Booking-Code-Generator/" class="pill-btn login" target="_blank" rel="noopener">
-                🗝️ Login
-            </a>
+        <div>
+          <div class="title">Empire Betting Tips</div>
+          <div class="sub">Mature, consistent football selections</div>
         </div>
-    </header>
-    <div class="container">
-        <div class="main-flex">
-            <div class="side-card">
-                <div class="side-title">How it Works</div>
-                <div class="desc">
-                    <strong>Subscribe</strong> to gain access to expertly selected football rollover tips.<br>
-                    <strong>Get weekly 2+ odds</strong> sent directly to your account.<br>
-                    <strong>Win more, stress less!</strong>
-                </div>
-                <div class="side-title" style="margin-top:1.7em;">Registration Guide</div>
-                <div class="desc">
-                    <ol style="padding-left:0.9em;margin:0;">
-                        <li>Click "Subscribe Now" and fill your details.</li>
-                        <li>Use "Pay Now" and complete payment.</li>
-                        <li>Refill your details, do face capture, and submit.</li>
-                        <li>Wait for confirmation and verify you are not a robot.</li>
-                        <li>For any issues, contact support.</li>
-                    </ol>
-                </div>
-            </div>
-            <div class="core-card">
-                <div class="core-title">Get Winning Tips Weekly</div>
-                <div class="price-highlight">Subscribe now: ₦5,500</div>
-                <div class="odds-note">Receive 2+ odds weekly, hand-picked by experts</div>
-                <div class="desc">
-                    Steady profits. Simple, proven results.<br>
-                    The best value for your betting success. Join now!
-                </div>
-                <a href="https://paystack.shop/pay/hi79etvoja" class="pill-btn signup" style="margin-top:.7em;" target="_blank" rel="noopener">
-                    🚀 Subscribe Now
-                </a>
-            </div>
-        </div>
-    </div>
-    <div id="signupModal">
-      <div class="signup-modal-content">
-        <button class="close-signup-modal-btn" onclick="document.getElementById('signupModal').style.display='none';" aria-label="Close">&times;</button>
-        <h3>How to Register</h3>
-        <ol>
-          <li>Enter your details and click "Pay Now".</li>
-          <li>Choose "Pay with Transfer" and complete payment.</li>
-          <li>Return, refill your details, do face capture, and submit.</li>
-          <li>Wait for confirmation and verify you are not a robot.</li>
-          <li>For any issues, contact our support team.</li>
-        </ol>
       </div>
-    </div>
-    <script>
-        // SIGNUP MODAL LOGIC
-        // If you want the Subscribe Now button to open the modal, uncomment the following:
-        // document.querySelector('.pill-btn.signup').onclick = function() {
-        //     document.getElementById('signupModal').style.display = 'flex';
-        // };
-        document.addEventListener('keydown', function(e) {
-            const signupModal = document.getElementById('signupModal');
-            if(signupModal.style.display === 'flex' && e.key === 'Escape') {
-                signupModal.style.display = 'none';
-            }
-        });
-        document.getElementById('signupModal').onclick = function(event) {
-            if(event.target === this) {
-                this.style.display = 'none';
-            }
-        };
-    </script>
+
+      <!-- Intentionally no action buttons in the header; actions live inside the pricing card -->
+      <div aria-hidden="true" style="width:1px;height:1px;opacity:0;pointer-events:none"></div>
+    </header>
+
+    <main>
+      <!-- Left: content / hero -->
+      <section class="hero" aria-labelledby="hero-heading">
+        <h1 id="hero-heading">Professional, risk-aware betting tips — delivered weekly.</h1>
+        <p>We focus on steady returns and clear odds (typically 2.0+). Join a disciplined group that prefers repeatable value over risky single plays.</p>
+
+        <div class="features" aria-hidden="false">
+          <div class="feature">2+ odds weekly</div>
+          <div class="feature">Analyst-reviewed picks</div>
+          <div class="feature">Secure payments (Paystack)</div>
+        </div>
+
+        <div style="margin-top:16px;color:var(--muted);font-size:0.95rem">
+          <strong>Quick registration</strong>
+          <ol style="margin:8px 0 0 1.05em;color:var(--muted);padding:0">
+            <li>Click Subscribe and complete payment on Paystack.</li>
+            <li>Return and confirm details if prompted.</li>
+            <li>Receive weekly selections via your chosen channel.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Right: single pricing card containing the only Subscribe and Login -->
+      <aside class="side" role="complementary" aria-labelledby="pricing">
+        <div class="price-row">
+          <div>
+            <div id="pricing" class="price">₦3,500</div>
+            <div class="price-sub">Monthly subscription</div>
+          </div>
+          <div class="trusted">Trusted • Private</div>
+        </div>
+
+        <div class="desc">Receive selections chosen for value and probability. We emphasise sustainable staking and transparency.</div>
+
+        <div class="cta" aria-label="Subscription actions">
+          <a class="btn sign-up" href="https://paystack.shop/pay/hi79etvoja" target="_blank" rel="noopener">Subscribe Now — ₦5,500</a>
+          <a class="btn login" href="https://empirestatebank.github.io/Secure-Booking-Code-Generator/" target="_blank" rel="noopener">Login</a>
+        </div>
+
+        <div style="margin-top:6px;color:var(--muted);font-size:0.92rem">Payments handled by Paystack. No hidden recurring charges.</div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>© Empire Betting Tips — 2025</div>
+      <div class="muted">For disciplined bettors seeking steady returns</div>
+    </footer>
+
+  </div>
 </body>
 </html>
